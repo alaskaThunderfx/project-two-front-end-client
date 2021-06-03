@@ -12,6 +12,40 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <div>
+        <h1>Welcome to a game!</h1>
+        <p id="messaging"></p>
+        <section class="intro-forms">
+          <form id="sign-up">
+            <input name="credentials[user_name]" type="text" placeholder="User Name"/>
+            <input name="credentials[password]" type="password" placeholder="Password"/>
+            <input name="credentials[password_confirmation]" type="password" placeholder="Confirm password"/>
+            <button id="sign-up-button">Sign Up!</button>
+          </form>
+          <form id="sign-in">
+            <input name="credentials[user_name]" type="text" placeholder="User Name"/>
+            <input name="credentials[password]" type="password" placeholder="Password"/>
+            <button id="sign-in-button">Sign In!</button>
+          </form>
+        </section>
+        <section class="logged-in-forms">
+          <form id="change-password">
+            <input name="passwords[old]" type="password" placeholder="Old Password"/>
+            <input name="passwords[new]" type="password" placeholder="New Password">
+            <button id="change-password-button">Change Password!</button>
+          </form>
+          <button id="sign-out">Sign Out!</button>
+        </section>
+        <section class="game-actions">
+          <button id="new-game">New Game!</button>
+          <button id="index-games">Index Games!</button>
+        </section>
+        <div class="game-screen">
+          <p id="game-text"></p>
+          <br>
+          <button id="move">Move Rooms!</button>
+        </div>
+        <div id="game-cabinet"></div>
+      </div>
     </body>
 </html>
