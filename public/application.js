@@ -16725,7 +16725,7 @@ var signUp = function signUp(userData) {
   console.log('in signUp');
   return $.ajax({
     method: 'POST',
-    url: config.apiUrl + '/sign-up',
+    url: config.apiUrl + 'sign-up',
     data: userData
   });
 };
@@ -16734,7 +16734,7 @@ var signIn = function signIn(userData) {
   console.log('in signIn');
   return $.ajax({
     method: 'POST',
-    url: config.apiUrl + '/sign-in',
+    url: config.apiUrl + 'sign-in',
     data: userData
   });
 };
@@ -16742,7 +16742,7 @@ var signIn = function signIn(userData) {
 var signOut = function signOut() {
   console.log('in signOut');
   return $.ajax({
-    url: config.apiUrl + '/sign-out',
+    url: config.apiUrl + 'sign-out',
     method: 'DELETE',
     headers: {
       Authorization: 'Bearer ' + store.user.token
@@ -16754,7 +16754,7 @@ var changePassword = function changePassword(userData) {
   console.log('in changePassword');
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + '/change-password',
+    url: config.apiUrl + 'change-password',
     data: userData,
     headers: {
       Authorization: 'Bearer ' + store.user.token
@@ -16976,7 +16976,7 @@ var newGame = function newGame(gameData) {
   console.log('in newGame');
   return $.ajax({
     method: 'POST',
-    url: config.apiUrl + '/games',
+    url: config.apiUrl + 'games',
     data: gameData,
     headers: {
       Authorization: 'Bearer ' + store.user.token
@@ -16988,7 +16988,7 @@ var indexGames = function indexGames() {
   console.log('in indexGames');
   return $.ajax({
     method: 'GET',
-    url: config.apiUrl + '/games',
+    url: config.apiUrl + 'games',
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }
@@ -17000,7 +17000,7 @@ var deleteGame = function deleteGame(gameId) {
   console.log('gameId: ', gameId.id);
   return $.ajax({
     method: 'DELETE',
-    url: config.apiUrl + '/games/' + gameId.id,
+    url: config.apiUrl + 'games/' + gameId.id,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }
@@ -17011,7 +17011,7 @@ var move = function move(moveData) {
   console.log('in move');
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + '/games/' + store.game._id,
+    url: config.apiUrl + 'games/' + store.game._id,
     data: moveData,
     headers: {
       Authorization: 'Bearer ' + store.user.token
