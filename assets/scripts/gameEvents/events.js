@@ -23,7 +23,22 @@ const onIndexGames = function (event) {
     .catch(ui.indexGamesFailure)
 }
 
-const onMove = function (event) {
+const onRoom1 = function (event) {
+  event.preventDefault()
+  const moveData = {
+    game: {
+      $push: {
+        areas: 'room1'
+      }
+    }
+  }
+  console.log('in onRoom1')
+  api.move(moveData)
+    .then(ui.room1Success)
+    .catch(ui.roomFailure)
+}
+
+const onRoom2 = function (event) {
   event.preventDefault()
   const moveData = {
     game: {
@@ -32,14 +47,63 @@ const onMove = function (event) {
       }
     }
   }
-  console.log('in onMove')
+  console.log('in onRoom2')
   api.move(moveData)
-    .then(ui.moveSuccess)
-    .catch(ui.moveFailure)
+    .then(ui.room2Success)
+    .catch(ui.roomFailure)
+}
+
+const onRoom3 = function (event) {
+  event.preventDefault()
+  const moveData = {
+    game: {
+      $push: {
+        areas: 'room3'
+      }
+    }
+  }
+  console.log('in onRoom3')
+  api.move(moveData)
+    .then(ui.room3Success)
+    .catch(ui.roomFailure)
+}
+
+const onRoom4 = function (event) {
+  event.preventDefault()
+  const moveData = {
+    game: {
+      $push: {
+        areas: 'room4'
+      }
+    }
+  }
+  console.log('in onRoom4')
+  api.move(moveData)
+    .then(ui.room4Success)
+    .catch(ui.roomFailure)
+}
+
+const onRoom5 = function (event) {
+  event.preventDefault()
+  const moveData = {
+    game: {
+      $push: {
+        areas: 'room5'
+      }
+    }
+  }
+  console.log('in onRoom5')
+  api.move(moveData)
+    .then(ui.room5Success)
+    .catch(ui.roomFailure)
 }
 
 module.exports = {
   onNewGame,
   onIndexGames,
-  onMove
+  onRoom1,
+  onRoom2,
+  onRoom3,
+  onRoom4,
+  onRoom5
 }

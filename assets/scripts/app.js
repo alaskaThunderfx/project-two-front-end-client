@@ -18,5 +18,9 @@ $(() => {
   // game actions begin
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#index-games').on('click', gameEvents.onIndexGames)
-  $('#move').on('click', gameEvents.onMove)
+  $('#room1').on('click', gameEvents.onRoom1)
+  $('#room2').on('click', gameEvents.onRoom2)
+  $('#room3').on('click', gameEvents.onRoom3)
+  $('#room4').on('click', gameEvents.onRoom4)
+  $('#room5').on('click', gameEvents.onRoom5)
 })
