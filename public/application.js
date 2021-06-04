@@ -3928,7 +3928,7 @@ module.exports = getFormFields;
 
 var apiUrl = void 0;
 var apiUrls = {
-  production: 'https://whispering-escarpment-14603.herokuapp.com/',
+  production: 'https://whispering-escarpment-14603.herokuapp.com',
   development: 'http://localhost:4741'
 };
 
