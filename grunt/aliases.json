@@ -1,7 +1,6 @@
 {
   "default": ["nag"],
   "deploy": [
-    "shell:git-is-clean",
     "shell:check-gitignore",
     "shell:git-rename-master-to-main",
     "shell:git-checkout-main",
