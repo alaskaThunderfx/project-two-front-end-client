@@ -13,6 +13,12 @@ body {
   min-height: 100vh;
 }
 
+button {
+  &.hidden {
+    display: none;
+  }
+}
+
 div {
   &.game-screen {
     display: flex;
@@ -23,6 +29,7 @@ div {
     max-height: 50vh;
     max-width: 50vw;
   }
+
   &.inner-screen {
     display: flex;
     flex-direction: column;
@@ -34,10 +41,32 @@ div {
     object-fit: cover;
     background-color: black;
   }
+
+  &.inner-border {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    align-items: center;
+    border: solid white 1px;
+    width: 98%;
+    height: 98%;
+  }
+
+  &.game-cabinet {
+    display: flex;
+    flex-direction: column;
+    max-width: 50vw;
+    align-items: center;
+    text-transform: capitalize;
+  }
 }
 
-button {
-  &.hidden {
-    display: none;
+p {
+  &.game-text {
+      margin: 5px auto;
+      overflow: auto;
+      padding: 5px 5px;
   }
 }

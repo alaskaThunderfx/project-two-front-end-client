@@ -18,6 +18,7 @@ $(() => {
   // game actions begin
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#index-games').on('click', gameEvents.onIndexGames)
+  $('#delete-game').on('submit', gameEvents.onDeleteGame)
   $('#room1').on('click', gameEvents.onRoom1)
   $('#room2').on('click', gameEvents.onRoom2)
   $('#room3').on('click', gameEvents.onRoom3)

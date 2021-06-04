@@ -1,4 +1,4 @@
-// const getFormFields = require('./../../../lib/get-form-fields.js')
+const getFormFields = require('./../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
@@ -21,6 +21,18 @@ const onIndexGames = function (event) {
   api.indexGames()
     .then(ui.indexGamesSuccess)
     .catch(ui.indexGamesFailure)
+}
+
+const onDeleteGame = function (event) {
+  event.preventDefault()
+  console.log('in onDeleteGame')
+  const form = event.target
+  console.log(form)
+  const bookId = getFormFields(form)
+  console.log(bookId)
+  api.deleteGame(bookId)
+    .then(ui.deleteGameSuccess)
+    .catch(ui.deleteGameFailure)
 }
 
 const onRoom1 = function (event) {
@@ -101,6 +113,7 @@ const onRoom5 = function (event) {
 module.exports = {
   onNewGame,
   onIndexGames,
+  onDeleteGame,
   onRoom1,
   onRoom2,
   onRoom3,
