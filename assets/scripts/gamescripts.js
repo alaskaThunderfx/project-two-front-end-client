@@ -1,3 +1,6 @@
+// intro message in to Room 4 (Living Room)
+const intro = 'You start out here, gaining consciousness on a couch. In here, besides the couch, is 3 locked doors, a console table with a locked drawer, three pictures on the wall and an empty pedestal in a corner. The pictures show a black fluffy kitty with the label "Leslie", a fluffy white dog with the label "Holly", and a fuzzy guinea pig with the label "Doris". one of the pictures has a code number behind it'
+
 // From room 1 you can go to room 2 or room 4
 const room1 = "You are in an empty room, there are two doors that don't appear to be locked..."
 
@@ -14,6 +17,7 @@ const room4 = "The first thing you notice as you enter this room is that besides
 const room5 = 'This appears to be an office of some sort. Other than the door you came through, there is a large oak desk with a comfy looking leather chair behind it.'
 
 module.exports = {
+  intro,
   room1,
   room2,
   room3,

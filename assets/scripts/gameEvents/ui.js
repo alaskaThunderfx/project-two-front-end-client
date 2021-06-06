@@ -1,17 +1,16 @@
 const store = require('../store.js')
-const gamescripts = require('../../gamescripts.js')
+const gamescripts = require('../gamescripts.js')
+const roomObjects = require('../roomObjects/roomObjects.js')
 
 const newGameSuccess = function (res) {
-  console.log('This is what\'s in store: ', store)
-  console.log('this is the res: ', res)
   store.game = res.game
-  console.log('this is the updated res: ', res)
-  console.log('this is the updated store: ', store)
+  console.log('Res: ', res)
+  console.log('Store: ', store)
   $('#messaging').html('')
   $('#messaging').html('New game created!')
   $('#room2').removeClass('hidden')
   $('#room4').removeClass('hidden')
-  $('.game-text').html(gamescripts.room1)
+  $('.game-text').html(gamescripts.intro)
 }
 
 const newGameFailure = function () {
