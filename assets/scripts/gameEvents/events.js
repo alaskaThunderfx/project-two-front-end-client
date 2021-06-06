@@ -1,6 +1,7 @@
 const getFormFields = require('./../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const roomObjects = require('../roomObjects/roomObjects.js')
 const store = require('../store.js')
 
 const onNewGame = function (event) {
@@ -8,7 +9,9 @@ const onNewGame = function (event) {
   console.log('in onNewGame')
   const gameData = {
     game: {
-      areas: ['room1']
+      areas: ['room1'],
+      inventory: [''],
+      rooms: [roomObjects.livingRoom, roomObjects.diningRoom, roomObjects.study, roomObjects.bedroom, roomObjects.lab]
     }
   }
   api.newGame(gameData)
@@ -44,7 +47,6 @@ const onInspect = function (event) {
   console.log(object.object)
   store.object = object.object
   ui.inspect()
-  // .catch(ui.inspectFailure)
 }
 
 const onPickUp = function (event) {

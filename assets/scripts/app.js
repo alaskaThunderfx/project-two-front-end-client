@@ -23,7 +23,6 @@ $(() => {
     $('#action-buttons').submit(gameEvents.onInspect)
   })
   $('#pick-up').on('click', () => {
-    console.log('pressing pick up')
     $('#action-buttons').submit(gameEvents.onPickUp)
   })
   $('#room1').on('click', gameEvents.onRoom1)
