@@ -9,7 +9,7 @@ const onNewGame = function (event) {
   console.log('in onNewGame')
   const gameData = {
     game: {
-      areas: ['room1'],
+      currentArea: 'room4',
       inventory: [''],
       rooms: [roomObjects.livingRoom, roomObjects.diningRoom, roomObjects.study, roomObjects.bedroom, roomObjects.lab]
     }
