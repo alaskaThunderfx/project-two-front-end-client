@@ -48,6 +48,10 @@ const move = function (moveData) {
   })
 }
 
+const open = function () {
+
+}
+
 const action = function (object) {
   console.log('In action')
   console.log('The object is: ', object)

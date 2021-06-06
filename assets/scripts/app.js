@@ -25,6 +25,9 @@ $(() => {
   $('#pick-up').on('click', () => {
     $('#action-buttons').submit(gameEvents.onPickUp)
   })
+  $('#open').on('click', () => {
+    $('#action-buttons').submit(gameEvents.onInspect)
+  })
   $('#room1').on('click', gameEvents.onRoom1)
   $('#room2').on('click', gameEvents.onRoom2)
   $('#room3').on('click', gameEvents.onRoom3)

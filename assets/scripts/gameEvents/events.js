@@ -49,6 +49,17 @@ const onInspect = function (event) {
   ui.inspect()
 }
 
+const onOpen = function (event) {
+  event.preventDefault()
+  console.log('You pressed Open')
+  const form = event.target
+  const object = getFormFields(form)
+  store.object = object.object
+  api.open(object)
+    .then(ui.openSuccess)
+    .catch(ui.openFailure)
+}
+
 const onPickUp = function (event) {
   event.preventDefault()
   console.log('in onPickUp')
