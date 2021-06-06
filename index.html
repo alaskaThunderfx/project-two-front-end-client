@@ -44,13 +44,6 @@
             <button id="delete-game-button">Delete Game!</button>
           </form>
         </section>
-        <section class="user-actions">
-          <form id="action-buttons">
-            <input type="text" placeholder="Name of object otineract with">
-            <button id="inspect">Inspect</button>
-            button
-          </form>
-        </section>
         <div class="game-screen">
           <div class="inner-screen">
             <div class="inner-border">
@@ -66,6 +59,19 @@
             </div>
           </div>
         </div>
+        <section class="user-actions">
+          <p class="user-action-messages"></p>
+          <form id="action-buttons">
+            <input name="object" type="text" placeholder="Name of object to ineract with"/>
+            <br>
+            <button id="inspect">Inspect</button>
+            <button id="pick-up">Pick up</button>
+            <button id="search">Search</button>
+            <button id="push">Push</button>
+            <button id="use">Use</button>
+            <button id="open">Open</button>
+          </form>
+        </section>
         <div class="game-cabinet"></div>
       </div>
     </body>

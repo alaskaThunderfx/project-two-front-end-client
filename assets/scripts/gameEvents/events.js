@@ -1,6 +1,7 @@
 const getFormFields = require('./../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const store = require('../store.js')
 
 const onNewGame = function (event) {
   event.preventDefault()
@@ -28,11 +29,31 @@ const onDeleteGame = function (event) {
   console.log('in onDeleteGame')
   const form = event.target
   console.log(form)
-  const bookId = getFormFields(form)
-  console.log(bookId)
-  api.deleteGame(bookId)
+  const gameId = getFormFields(form)
+  console.log(gameId)
+  api.deleteGame(gameId)
     .then(ui.deleteGameSuccess)
     .catch(ui.deleteGameFailure)
+}
+
+const onInspect = function (event) {
+  event.preventDefault()
+  console.log('You pressed Inspect')
+  const form = event.target
+  const object = getFormFields(form)
+  console.log(object.object)
+  store.object = object.object
+  ui.inspect()
+  // .catch(ui.inspectFailure)
+}
+
+const onPickUp = function (event) {
+  event.preventDefault()
+  console.log('in onPickUp')
+  const form = event.target
+  const object = getFormFields(form)
+  store.object = object.object
+  ui.pickUp()
 }
 
 const onRoom1 = function (event) {
@@ -114,6 +135,8 @@ module.exports = {
   onNewGame,
   onIndexGames,
   onDeleteGame,
+  onInspect,
+  onPickUp,
   onRoom1,
   onRoom2,
   onRoom3,

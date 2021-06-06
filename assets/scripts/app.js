@@ -19,6 +19,13 @@ $(() => {
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#index-games').on('click', gameEvents.onIndexGames)
   $('#delete-game').on('submit', gameEvents.onDeleteGame)
+  $('#inspect').on('click', () => {
+    $('#action-buttons').submit(gameEvents.onInspect)
+  })
+  $('#pick-up').on('click', () => {
+    console.log('pressing pick up')
+    $('#action-buttons').submit(gameEvents.onPickUp)
+  })
   $('#room1').on('click', gameEvents.onRoom1)
   $('#room2').on('click', gameEvents.onRoom2)
   $('#room3').on('click', gameEvents.onRoom3)

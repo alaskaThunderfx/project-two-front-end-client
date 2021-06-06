@@ -1,6 +1,8 @@
 const store = require('../store.js')
 const gamescripts = require('../gamescripts.js')
 const roomObjects = require('../roomObjects/roomObjects.js')
+store.livingRoom = roomObjects.livingRoom
+console.log(store.livingRoom)
 
 const newGameSuccess = function (res) {
   store.game = res.game
@@ -65,10 +67,33 @@ const deleteGameSuccess = function (res) {
   $('#messaging').html('')
   $('#messaging').html('Game deleted!')
 }
+
 const deleteGameFailure = function () {
   console.error()
   $('#messaging').html('')
   $('#messaging').html('Much like cockroaches, this game isn\'t going anywhere!')
+}
+
+// Just trying to make this work for the first room
+const inspect = function (res) {
+  // for livingRoom
+  let object = store.object
+  console.log('Here\'s a string for ya: ', typeof object)
+  console.log('in inspectSuccess')
+  console.log('The stored object is: ', object, ' and \'sofa\' is a: ', typeof 'sofa', ' do they match? ', object === 'sofa')
+  if (object === 'sofa') {
+    $('.user-action-messages').html('I\'m no sure if you\'re lookin\' at the sofa, or the sofa\'s lookin\' at you...')
+  } else if (object !== 'door' || object !== 'sofa' || object !== 'table' || object !== 'pictures' || object !== 'pedestal') {
+    console.log(`Ummmm, we don't have any ${object}`)
+    $('.user-action-messages').html('')
+    $('.user-action-messages').html('This either does not exist or is unremarkable...')
+    object = null
+  }
+}
+
+const pickUp = function(res) {
+  let object = store.object
+  console.log('You\'re in pickUp AND the object is: ', object)
 }
 
 const room1Success = function (res) {
@@ -140,6 +165,8 @@ module.exports = {
   indexGamesFailure,
   deleteGameSuccess,
   deleteGameFailure,
+  inspect,
+  pickUp,
   room1Success,
   room2Success,
   room3Success,
