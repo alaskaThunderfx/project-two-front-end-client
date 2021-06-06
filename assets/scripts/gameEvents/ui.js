@@ -1,7 +1,7 @@
 const store = require('../store.js')
 const gamescripts = require('../gamescripts.js')
 
-const livingRoomItems = ['sofa', 'doors', 'table', 'drawer', 'paintings', 'pedestal']
+const livingRoomItems = ['sofa', 'doors', 'table', 'drawer', 'paintings', 'pedestal', 'first door', 'second door', 'third door']
 
 const newGameSuccess = function (res) {
   store.game = res.game
