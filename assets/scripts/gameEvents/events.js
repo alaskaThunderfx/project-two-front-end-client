@@ -2,14 +2,17 @@ const getFormFields = require('./../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 const roomObjects = require('../roomObjects/roomObjects.js')
+const roomItems = require('../roomObjects/roomItems.js')
 const store = require('../store.js')
+
+const livingRoomItems = roomItems.livingRoomItems
 
 const onNewGame = function (event) {
   event.preventDefault()
   console.log('in onNewGame')
   const gameData = {
     game: {
-      currentArea: 'room4',
+      currentArea: 'livingRoom',
       inventory: [''],
       rooms: [roomObjects.livingRoom, roomObjects.diningRoom, roomObjects.study, roomObjects.bedroom, roomObjects.lab]
     }
@@ -39,14 +42,25 @@ const onDeleteGame = function (event) {
     .catch(ui.deleteGameFailure)
 }
 
-const onInspect = function (event) {
+const onAction = function (event, btnId) {
   event.preventDefault()
+  console.log('btnId = ', btnId)
+  // console.log(store.game.inventory)
   console.log('You pressed Inspect')
   const form = event.target
   const object = getFormFields(form)
-  console.log(object.object)
-  store.object = object.object
-  ui.inspect()
+  console.log(object)
+  if (store.game.currentArea === 'livingRoom') {
+    if (livingRoomItems.includes(object.object)) {
+      console.log(object.object)
+      ui.inspectSuccess(object.object)
+    } else {
+      console.log(object.object)
+      $('.user-action-messages').html(`There is either no ${object.object} here, or ${object.object} is unremarkable...`)
+      $('#action-buttons').trigger('reset')
+      $('#inspect').trigger('reset')
+    }
+  }
 }
 
 const onOpen = function (event) {
@@ -54,8 +68,7 @@ const onOpen = function (event) {
   console.log('You pressed Open')
   const form = event.target
   const object = getFormFields(form)
-  store.object = object.object
-  api.open(object)
+  api.open(object.object)
     .then(ui.openSuccess)
     .catch(ui.openFailure)
 }
@@ -148,8 +161,9 @@ module.exports = {
   onNewGame,
   onIndexGames,
   onDeleteGame,
-  onInspect,
+  onAction,
   onPickUp,
+  onOpen,
   onRoom1,
   onRoom2,
   onRoom3,

@@ -48,9 +48,9 @@ const move = function (moveData) {
   })
 }
 
-const open = function () {
-
-}
+// const open = function () {
+//
+// }
 
 const action = function (object) {
   console.log('In action')

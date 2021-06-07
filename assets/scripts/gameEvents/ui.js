@@ -1,7 +1,7 @@
 const store = require('../store.js')
 const gamescripts = require('../gamescripts.js')
 
-const livingRoomItems = ['sofa', 'doors', 'table', 'drawer', 'paintings', 'pedestal', 'first door', 'second door', 'third door']
+// const livingRoomItems = ['sofa', 'doors', 'table', 'drawer', 'paintings', 'pedestal', 'first door', 'second door', 'third door']
 
 const newGameSuccess = function (res) {
   store.game = res.game
@@ -73,35 +73,40 @@ const deleteGameFailure = function () {
   $('#messaging').html('Much like cockroaches, this game isn\'t going anywhere!')
 }
 
-// Just trying to make this work for the first room
-const inspect = function () {
+// Just trying to make this work for the first room=
+const inspectSuccess = function (object) {
   // for livingRoom
-  const object = store.object
   // if (!livingRoomItems.includes(object)) {
   //   $('.user-action-messages').html('This either does not exist or is unremarkable...')
-  // } else
-  if (livingRoomItems.includes(object)) {
-    if (object === 'sofa') {
-      $('.user-action-messages').html('I\'m no sure if you\'re lookin\' at the sofa, or the sofa\'s lookin\' at you...')
-    } else if (object === 'door' || object === 'doors') {
-      $('.user-action-messages').html('Well, there are three doors here... The \'first door\' has the number 1 above it, the \'second door\' has the number 3 above it, and the \'third door\' has no number.')
-    } else if (object === 'first door' || object === 'second door') {
-      $('.user-action-messages').html('This door appears to be pretty normal.')
-    } else if (object === 'third door') {
-      $('.user-action-messages').html('This door appears to be missing a doorknob... Damn...')
-    } else if (object === 'table') {
-      $('.user-action-messages').html('This is a nice console table! It doesn\'t have much on top, however, there appears to be a \'drawer\' in it.')
-    } else if (object === 'drawer') {
-      $('.user-action-messages').html('Just a normal looking drawer... Doesn\'t appear to be locked.')
-    } else if (object === 'paintings') {
-      $('.user-action-messages').html('There are three framed paintings on the wall. The first one is of a cute and fluffy white dog, the second one is of a cute and fluffy white and grey guinea pig, the third is of a cute and fluffy black cat. There are name plates beneath each picture reading "Holly", "Doris", and "Leslie", respectively.')
-    } else if (object === 'pedestal') {
-      $('.user-action-messages').html('This pedestal has nothing on it... The top of it is dusty, but there is a square shape in the middle of it that has no dust... Maybe something was recently moved from here?')
-    }
-    store.object = null
-    console.log(store.object)
-    $('#action-buttons').trigger('reset')
+  console.log(object)
+  // if (livingRoomItems.includes(object)) {
+  if (object === 'sofa') {
+    $('.user-action-messages').html('I\'m not sure if you\'re lookin\' at the sofa, or the sofa\'s lookin\' at you...')
+  } else if (object === 'door' || object === 'doors') {
+    $('.user-action-messages').html('Well, there are three doors here... The \'first door\' has the number 1 above it, the \'second door\' has the number 3 above it, and the \'third door\' has no number.')
+  } else if (object === 'first door' || object === 'second door') {
+    $('.user-action-messages').html('This door appears to be pretty normal.')
+  } else if (object === 'third door') {
+    $('.user-action-messages').html('This door appears to be missing a doorknob... Damn...')
+  } else if (object === 'table') {
+    $('.user-action-messages').html('This is a nice console table! It doesn\'t have much on top, however, there appears to be a \'drawer\' in it.')
+  } else if (object === 'drawer') {
+    $('.user-action-messages').html('Just a normal looking drawer... Doesn\'t appear to be locked.')
+  } else if (object === 'paintings') {
+    $('.user-action-messages').html('There are three framed paintings on the wall. The first one is of a cute and fluffy white dog, the second one is of a cute and fluffy white and grey guinea pig, the third is of a cute and fluffy black cat. There are name plates beneath each picture reading "Holly", "Doris", and "Leslie", respectively.')
+  } else if (object === 'pedestal') {
+    $('.user-action-messages').html('This pedestal has nothing on it... The top of it is dusty, but there is a square shape in the middle of it that has no dust... Maybe something was recently moved from here?')
   }
+  $('#action-buttons').trigger('reset')
+// } else {
+//   $('.user-action-messages').html('This either does not exist or is unremarkable...')
+}
+
+const inspectFailure = function (object) {
+  console.log('in inspectFailure')
+  const littleTest = object
+  $('.user-action-messages').html(`There is either no ${littleTest} here, or ${littleTest} is unremarkable...`)
+  $('#action-buttons').trigger('reset')
 }
 
 const open = function () {
@@ -185,7 +190,8 @@ module.exports = {
   indexGamesFailure,
   deleteGameSuccess,
   deleteGameFailure,
-  inspect,
+  inspectSuccess,
+  inspectFailure,
   open,
   pickUp,
   room1Success,
