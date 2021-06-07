@@ -1,7 +1,8 @@
 const store = require('../store.js')
 const gamescripts = require('../gamescripts.js')
-
-// const livingRoomItems = ['sofa', 'doors', 'table', 'drawer', 'paintings', 'pedestal', 'first door', 'second door', 'third door']
+const livingRoomInspect = require('../roomObjects/livingRoom/inspect.js')
+const livingRoomOpen = require('../roomObjects/livingRoom/open.js')
+const livingRoomPickUp = require('../roomObjects/livingRoom/pick-up.js')
 
 const newGameSuccess = function (res) {
   store.game = res.game
@@ -76,49 +77,48 @@ const deleteGameFailure = function () {
 // Just trying to make this work for the first room=
 const inspectSuccess = function (object) {
   // for livingRoom
-  // if (!livingRoomItems.includes(object)) {
-  //   $('.user-action-messages').html('This either does not exist or is unremarkable...')
   console.log(object)
-  // if (livingRoomItems.includes(object)) {
   if (object === 'sofa') {
-    $('.user-action-messages').html('I\'m not sure if you\'re lookin\' at the sofa, or the sofa\'s lookin\' at you...')
+    $('.user-action-messages').html(livingRoomInspect.sofa)
   } else if (object === 'door' || object === 'doors') {
-    $('.user-action-messages').html('Well, there are three doors here... The \'first door\' has the number 1 above it, the \'second door\' has the number 3 above it, and the \'third door\' has no number.')
-  } else if (object === 'first door' || object === 'second door') {
-    $('.user-action-messages').html('This door appears to be pretty normal.')
+    $('.user-action-messages').html(livingRoomInspect.doors)
+  } else if (object === 'first door') {
+    $('.user-action-messages').html(livingRoomInspect.firstDoor)
+  } else if (object === 'second door') {
+    $('.user-action-messages').html(livingRoomInspect.secondDoor)
   } else if (object === 'third door') {
-    $('.user-action-messages').html('This door appears to be missing a doorknob... Damn...')
+    $('.user-action-messages').html(livingRoomInspect.thirdDoor)
   } else if (object === 'table') {
-    $('.user-action-messages').html('This is a nice console table! It doesn\'t have much on top, however, there appears to be a \'drawer\' in it.')
+    $('.user-action-messages').html(livingRoomInspect.table)
   } else if (object === 'drawer') {
-    $('.user-action-messages').html('Just a normal looking drawer... Doesn\'t appear to be locked.')
+    $('.user-action-messages').html(livingRoomInspect.drawer)
   } else if (object === 'paintings') {
-    $('.user-action-messages').html('There are three framed paintings on the wall. The first one is of a cute and fluffy white dog, the second one is of a cute and fluffy white and grey guinea pig, the third is of a cute and fluffy black cat. There are name plates beneath each picture reading "Holly", "Doris", and "Leslie", respectively.')
+    $('.user-action-messages').html(livingRoomInspect.paintings)
   } else if (object === 'pedestal') {
-    $('.user-action-messages').html('This pedestal has nothing on it... The top of it is dusty, but there is a square shape in the middle of it that has no dust... Maybe something was recently moved from here?')
+    $('.user-action-messages').html(livingRoomInspect.pedestal)
   }
   $('#action-buttons').trigger('reset')
-// } else {
-//   $('.user-action-messages').html('This either does not exist or is unremarkable...')
 }
 
-const inspectFailure = function (object) {
-  console.log('in inspectFailure')
-  const littleTest = object
-  $('.user-action-messages').html(`There is either no ${littleTest} here, or ${littleTest} is unremarkable...`)
+const openSuccess = function (object) {
+  $('.user-action-messages').html(livingRoomOpen.drawer)
+  if (object === 'second door') {
+    console.log('works')
+  }
   $('#action-buttons').trigger('reset')
 }
 
-const open = function () {
-  const object = store.object
-  if (object === 'key') {
-    $('.user-action-messages').html('This pedestal has nothing on it... The top of it is dusty, but there is a square shape in the middle of it that has no dust... Maybe something was recently moved from here?')
+const openFailure = function (object) {
+  console.log(object)
+  if (object === 'second door') {
+    $('.user-action-messages').html(livingRoomOpen.secondDoorLocked)
   }
+  $('#action-buttons').trigger('reset')
 }
 
-const pickUp = function (res) {
-  let object = store.object
-  console.log('You\'re in pickUp AND the object is: ', object)
+const pickUpSuccess = function (res) {
+  $('.user-action-messages').html(livingRoomPickUp.key)
+  $('#action-buttons').trigger('reset')
 }
 
 const room1Success = function (res) {
@@ -191,9 +191,9 @@ module.exports = {
   deleteGameSuccess,
   deleteGameFailure,
   inspectSuccess,
-  inspectFailure,
-  open,
-  pickUp,
+  openSuccess,
+  openFailure,
+  pickUpSuccess,
   room1Success,
   room2Success,
   room3Success,

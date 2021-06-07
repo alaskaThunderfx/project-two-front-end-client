@@ -2,10 +2,8 @@ const getFormFields = require('./../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 const roomObjects = require('../roomObjects/roomObjects.js')
-const roomItems = require('../roomObjects/roomItems.js')
+const livingRoomItems = require('../roomObjects/livingRoom/items.js')
 const store = require('../store.js')
-
-const livingRoomItems = roomItems.livingRoomItems
 
 const onNewGame = function (event) {
   event.preventDefault()
@@ -44,42 +42,89 @@ const onDeleteGame = function (event) {
 
 const onAction = function (event, btnId) {
   event.preventDefault()
-  console.log('btnId = ', btnId)
-  // console.log(store.game.inventory)
-  console.log('You pressed Inspect')
   const form = event.target
   const object = getFormFields(form)
-  console.log(object)
   if (store.game.currentArea === 'livingRoom') {
-    if (livingRoomItems.includes(object.object)) {
-      console.log(object.object)
-      ui.inspectSuccess(object.object)
+    if (livingRoomItems.items.includes(object.object)) {
+      if (btnId === 'inspect') {
+        ui.inspectSuccess(object.object)
+      } else if (btnId === 'open') {
+        // for the table drawer
+        if (object.object === 'drawer') {
+          if (store.game.rooms[0].livingRoom.table.isOpen === 'false') {
+            const gameData = {
+              game: {
+                rooms: {
+                  livingRoom: {
+                    table: {
+                      isOpen: true
+                    }
+                  }
+                }
+              }
+            }
+            store.game.rooms[0].livingRoom.table.isOpen = 'true'
+            api.updateGame(gameData)
+              .then(ui.openSuccess)
+              .catch(ui.openFailure)
+          }
+        } else if (object.object === 'second door') {
+          if (store.game.rooms[0].livingRoom.doors[0].diningRoom.isLocked === 'true') {
+            ui.openFailure(object.object)
+          } else {
+            const gameData = {
+              game: {
+                $pull: {
+                  inventory: 'key'
+                },
+                rooms: {
+                  livingRoom: {
+                    doors: {
+                      diningRoom: {
+                        isLocked: 'false'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            store.object = object.object
+            api.updateGame(gameData)
+              .then(ui.openSuccess(object))
+          }
+        }
+      } else if (btnId === 'pick-up') {
+        if (object.object === 'key') {
+          if (store.game.rooms[0].livingRoom.table.hasKey === 'true') {
+            store.game.rooms[0].livingRoom.table.hasKey = 'false'
+            store.game.inventory.push('key')
+            const gameData = {
+              game: {
+                $push: {
+                  inventory: 'key'
+                },
+                rooms: {
+                  livingRoom: {
+                    table: {
+                      hasKey: false
+                    }
+                  }
+                }
+              }
+            }
+            api.updateGame(gameData)
+              .then(ui.pickUpSuccess)
+              .catch(ui.pickUpFailure)
+          }
+        } else if (object.object === 'second door') {
+
+        }
+      }
     } else {
-      console.log(object.object)
-      $('.user-action-messages').html(`There is either no ${object.object} here, or ${object.object} is unremarkable...`)
+      $('.user-action-messages').html(`There is either no ${object.object} here, or this action cannot be performed on this object.`)
       $('#action-buttons').trigger('reset')
-      $('#inspect').trigger('reset')
     }
   }
-}
-
-const onOpen = function (event) {
-  event.preventDefault()
-  console.log('You pressed Open')
-  const form = event.target
-  const object = getFormFields(form)
-  api.open(object.object)
-    .then(ui.openSuccess)
-    .catch(ui.openFailure)
-}
-
-const onPickUp = function (event) {
-  event.preventDefault()
-  console.log('in onPickUp')
-  const form = event.target
-  const object = getFormFields(form)
-  store.object = object.object
-  ui.pickUp()
 }
 
 const onRoom1 = function (event) {
@@ -162,8 +207,6 @@ module.exports = {
   onIndexGames,
   onDeleteGame,
   onAction,
-  onPickUp,
-  onOpen,
   onRoom1,
   onRoom2,
   onRoom3,

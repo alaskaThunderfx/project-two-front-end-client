@@ -48,9 +48,16 @@ const move = function (moveData) {
   })
 }
 
-// const open = function () {
-//
-// }
+const updateGame = function (gameData) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    data: gameData,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
 
 const action = function (object) {
   console.log('In action')
@@ -64,5 +71,6 @@ module.exports = {
   indexGames,
   deleteGame,
   move,
-  action
+  action,
+  updateGame
 }
