@@ -22,7 +22,9 @@ $(() => {
 
   $('.actions').on('click', event => {
     event.preventDefault()
+    console.log('pressing a button')
     const btnId = $(event.target).attr('id')
+    console.log('button id= ', btnId)
     $('#action-buttons').trigger('submit', btnId)
   })
   $('#action-buttons').on('submit', gameEvents.onAction)

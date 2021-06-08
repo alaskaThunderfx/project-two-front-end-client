@@ -3,6 +3,7 @@ const gamescripts = require('../gamescripts.js')
 const livingRoomInspect = require('../roomObjects/livingRoom/inspect.js')
 const livingRoomOpen = require('../roomObjects/livingRoom/open.js')
 const livingRoomPickUp = require('../roomObjects/livingRoom/pick-up.js')
+const livingRoomUse = require('../roomObjects/livingRoom/use.js')
 
 const newGameSuccess = function (res) {
   store.game = res.game
@@ -121,6 +122,11 @@ const pickUpSuccess = function (res) {
   $('#action-buttons').trigger('reset')
 }
 
+const useSuccess = function (res) {
+  $('.user-action-messages').html(livingRoomUse.keySecondDoor)
+  $('#action-buttons').trigger('reset')
+}
+
 const room1Success = function (res) {
   $('#room2').removeClass('hidden')
   $('#room4').removeClass('hidden')
@@ -193,6 +199,7 @@ module.exports = {
   inspectSuccess,
   openSuccess,
   openFailure,
+  useSuccess,
   pickUpSuccess,
   room1Success,
   room2Success,

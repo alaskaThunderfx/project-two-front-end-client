@@ -42,14 +42,22 @@ const onDeleteGame = function (event) {
 
 const onAction = function (event, btnId) {
   event.preventDefault()
+  console.log('btnId = ', btnId)
+  console.log(btnId === 'use')
   const form = event.target
   const object = getFormFields(form)
   if (store.game.currentArea === 'livingRoom') {
-    if (livingRoomItems.items.includes(object.object)) {
-      if (btnId === 'inspect') {
+    console.log('current area = livingRoom')
+    if (btnId === 'inspect') {
+      if (livingRoomItems.items.includes(object.object)) {
         ui.inspectSuccess(object.object)
-      } else if (btnId === 'open') {
-        // for the table drawer
+      } else {
+        $('.user-action-messages').html(`There is either no ${object.object} here, or this action cannot be performed on this object.`)
+        $('#action-buttons').trigger('reset')
+      }
+    } else if (btnId === 'open') {
+      if (livingRoomItems.items.includes(object.object)) {
+      // for the table drawer
         if (object.object === 'drawer') {
           if (store.game.rooms[0].livingRoom.table.isOpen === 'false') {
             const gameData = {
@@ -93,11 +101,17 @@ const onAction = function (event, btnId) {
               .then(ui.openSuccess(object))
           }
         }
-      } else if (btnId === 'pick-up') {
+      } else {
+        $('.user-action-messages').html(`There is either no ${object.object} here, or this action cannot be performed on this object.`)
+        $('#action-buttons').trigger('reset')
+      }
+    } else if (btnId === 'pick-up') {
+      if (livingRoomItems.items.includes(object.object)) {
         if (object.object === 'key') {
           if (store.game.rooms[0].livingRoom.table.hasKey === 'true') {
             store.game.rooms[0].livingRoom.table.hasKey = 'false'
             store.game.inventory.push('key')
+            console.log(store.game.inventory)
             const gameData = {
               game: {
                 $push: {
@@ -116,13 +130,38 @@ const onAction = function (event, btnId) {
               .then(ui.pickUpSuccess)
               .catch(ui.pickUpFailure)
           }
-        } else if (object.object === 'second door') {
-
+        }
+      } else {
+        $('.user-action-messages').html(`There is either no ${object.object} here, or this action cannot be performed on this object.`)
+        $('#action-buttons').trigger('reset')
+      }
+    } else if (btnId === 'use') {
+      if (object.object === 'key > second door') {
+        if (store.game.inventory.includes('key')) {
+          store.game.inventory.splice(store.game.inventory.indexOf('key'), 1)
+          store.game.rooms[0].livingRoom.doors[0].diningRoom.isLocked = 'false'
+          const gameData = {
+            game: {
+              $pull: {
+                inventory: 'key'
+              },
+              rooms: {
+                livingRoom: {
+                  doors: {
+                    diningRoom: {
+                      isLocked: false
+                    }
+                  }
+                }
+              }
+            }
+          }
+          api.updateGame(gameData)
+            .then(ui.useSuccess)
+            .catch(ui.useFailure)
         }
       }
-    } else {
-      $('.user-action-messages').html(`There is either no ${object.object} here, or this action cannot be performed on this object.`)
-      $('#action-buttons').trigger('reset')
+      console.log('use store: ', store)
     }
   }
 }

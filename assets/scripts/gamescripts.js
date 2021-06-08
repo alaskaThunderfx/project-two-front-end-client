@@ -1,5 +1,5 @@
 // intro message in to Room 4 (Living Room)
-const intro = 'You start out here, gaining consciousness on a \'sofa\'. In here, besides the \'sofa\', are 3 locked \'doors\', a console \'table\' with a locked \'drawer\', three \'paintings\' on the wall and an empty \'pedestal\' in a corner. The pictures show a black fluffy kitty with the label "Leslie", a fluffy white dog with the label "Holly", and a fuzzy guinea pig with the label "Doris". one of the pictures has a code number behind it'
+const intro = '... <i>Ow... My head..</i> Your eyes open slowly as you come to from... <i>Did I take a nap?</i> The light is dim, so your eyes adjust quickly, and it doesn\'t take long for you to realize you\'re not in a familiar place... Sitting up from the <b>sofa</b> where you were sleeping, you take in your surroundings. The first thing you notice is that this room has three <b>doors</b> in it. Along the doorless wall is a console <b>table</b>, above which are hanging three <b>paintings</b>. Finally, you notice a <b>pedestal</b> in the corner... <i>Where the hell am I?</i>'
 
 // From room 1 you can go to room 2 or room 4
 const room1 = "You are in an empty room, there are two doors that don't appear to be locked..."
