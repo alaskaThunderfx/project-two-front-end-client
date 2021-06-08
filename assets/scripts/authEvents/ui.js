@@ -4,8 +4,11 @@ const signUpSuccess = function (res) {
   $('#sign-up').trigger('reset')
   $('#messaging').html('')
   $('#messaging').html('You\'ve signed up!')
-  console.log('in signUpSuccess')
-  console.log('res = ', res)
+  $('#sign-up').css('display', 'none')
+  $('#sign-in').css('display', 'flex')
+  setTimeout(function () {
+    $('#messaging').html('')
+  }, 3000)
 }
 
 const signUpFailure = function () {
@@ -17,11 +20,16 @@ const signInSuccess = function (res) {
   $('#sign-in').trigger('reset')
   $('#messaging').html('')
   $('#messaging').html('You\'ve signed in!')
-
+  $('#sign-in').css('display', 'none')
+  $('#returning-user').addClass('hidden')
+  $('#new-user').addClass('hidden')
+  $('.logged-in-forms').removeClass('hidden')
+  $('.game-actions').removeClass('hidden')
+  setTimeout(function () {
+    $('#messaging').html('')
+  }, 3000)
   // store users data
   store.user = res.user
-  console.log('in signInSuccess')
-  console.log('res = ', res)
 }
 
 const signInFailure = function () {

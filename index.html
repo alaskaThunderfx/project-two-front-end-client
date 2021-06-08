@@ -18,7 +18,7 @@
     </head>
     <body>
       <div>
-        <h1>Welcome to a game!</h1>
+        <h1 class="title">Escape</h1>
         <p id="messaging"></p>
         <section class="intro-forms">
           <form id="sign-up">
@@ -32,16 +32,21 @@
             <input name="credentials[password]" type="password" placeholder="Password"/>
             <button id="sign-in-button">Sign In!</button>
           </form>
+          <p class="hidden" id="new-user">Are you a new user? Click <span id="new-here"><b>here</b></span>!</p>
+          <p id="returning-user">Are you a returning user? Click <span id="returning-here"><b>here</b></span>!</p>
         </section>
-        <section class="logged-in-forms">
-          <form id="change-password">
-            <input name="passwords[old]" type="password" placeholder="Old Password"/>
-            <input name="passwords[new]" type="password" placeholder="New Password">
-            <button id="change-password-button">Change Password!</button>
-          </form>
-          <button id="sign-out">Sign Out!</button>
+        <section class="for-screen-hiding hidden">
+          <div class="game-screen">
+            <div class="inner-screen">
+              <div class="inner-border">
+                <p class="game-text"></p>
+                <br>
+                <p class="user-action-messages"></p>
+              </div>
+            </div>
+          </div>
         </section>
-        <section class="game-actions">
+        <section class="game-actions hidden">
           <button id="new-game">New Game!</button>
           <button id="index-games">Index Games!</button>
           <form id="delete-game">
@@ -49,35 +54,33 @@
             <button id="delete-game-button">Delete Game!</button>
           </form>
         </section>
-        <div class="game-screen">
-          <div class="inner-screen">
-            <div class="inner-border">
-              <p class="game-text"></p>
-              <br>
-              <p class="user-action-messages"></p>
-              <section class="nav-buttons">
-                <button class="hidden" id="room1">Room 1!</button>
-                <button class="hidden" id="room2">Room 2!</button>
-                <button class="hidden" id="room3">Room 3!</button>
-                <button class="hidden" id="room4">Room 4!</button>
-                <button class="hidden" id="room5">Room 5!</button>
-              </section>
-            </div>
-          </div>
-        </div>
-        <section class="user-actions">
+        <section class="logged-in-forms hidden">
+          <form id="change-password">
+            <input name="passwords[old]" type="password" placeholder="Old Password"/>
+            <input name="passwords[new]" type="password" placeholder="New Password">
+            <button id="change-password-button">Change Password!</button>
+          </form>
+          <button id="sign-out">Sign Out!</button>
+        </section>
+        <section class="user-actions hidden">
           <form id="action-buttons">
             <input id="object-name" name="object" type="text" placeholder="Name of object to ineract with"/>
-            <br>
             <button class="actions" id="inspect">Inspect</button>
             <button class="actions" id="pick-up">Pick up</button>
-            <button class="actions" id="search">Search</button>
-            <button class="actions" id="push">Push</button>
+            <!-- <button class="actions" id="search">Search</button> -->
+            <!-- <button class="actions" id="push">Push</button> -->
             <button class="actions" id="use">Use</button>
             <button class="actions" id="open">Open</button>
           </form>
         </section>
         <div class="game-cabinet"></div>
       </div>
+      <!-- <iframe src="./assets/title-screen.mp3" type="audio/mp3" allow="autoplay" id="audio" style="display:none"></iframe> -->
+      <!-- <audio autoplay>
+          <source src="./assets/title-screen.mp3" type="audio/mp3">
+      </audio> -->
+      <!-- <audio controls>
+        <source src="./assets/title-screen.mp3" type="audio/mpeg" autoplay>
+      </audio> -->
     </body>
 </html>

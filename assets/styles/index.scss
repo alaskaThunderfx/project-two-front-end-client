@@ -11,13 +11,10 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  min-width: 470px;
   font-family: 'VT323', monospace;
-}
-
-button {
-  &.hidden {
-    display: none;
-  }
+  background-color: black;
+  color: white;
 }
 
 div {
@@ -26,9 +23,10 @@ div {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: dotted black 4px;
-    max-height: 50vh;
+    border: dashed white 2px;
+    max-height: 83vh;
     max-width: 50vw;
+    min-width: 470px;
     font-size: 20px;
   }
 
@@ -65,10 +63,61 @@ div {
   }
 }
 
+h1 {
+  text-align: center;
+  &.title {
+    font-size: 10em;
+  }
+}
+
 p {
+  text-align: center;
   &.game-text {
       margin: 5px auto;
       overflow: auto;
       padding: 5px 5px;
+  }
+}
+
+.hidden {
+    display: none;
+}
+
+.intro-forms {
+  display: flex;
+  opacity: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-actions {
+  display: none;
+  justify-content: center;
+}
+
+#action-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+#sign-up {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+#sign-in {
+  display: none;
+  flex-direction: column;
+  width: 60%;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }

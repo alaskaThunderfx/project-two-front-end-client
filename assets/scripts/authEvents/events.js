@@ -44,9 +44,25 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
+const revealSignIn = function () {
+  $('#sign-up').css('display', 'flex')
+  $('#sign-in').css('display', 'none')
+  $('#new-user').addClass('hidden')
+  $('#returning-user').removeClass('hidden')
+}
+
+const revealSignUp = function () {
+  $('#sign-up').css('display', 'none')
+  $('#sign-in').css('display', 'flex')
+  $('#new-user').removeClass('hidden')
+  $('#returning-user').addClass('hidden')
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
+  revealSignIn,
+  revealSignUp,
   onSignOut,
   onChangePassword
 }

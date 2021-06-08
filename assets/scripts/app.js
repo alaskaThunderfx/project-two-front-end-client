@@ -12,6 +12,8 @@ $(() => {
   // user account actions begin
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
+  $('#new-here').on('click', authEvents.revealSignIn)
+  $('#returning-here').on('click', authEvents.revealSignUp)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#change-password').on('submit', authEvents.onChangePassword)
   // user account actions ends

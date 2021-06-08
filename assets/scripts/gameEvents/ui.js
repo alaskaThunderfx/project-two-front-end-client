@@ -11,8 +11,10 @@ const newGameSuccess = function (res) {
   console.log('Store: ', store)
   $('#messaging').html('')
   $('#messaging').html('New game created!')
-  $('#room2').removeClass('hidden')
-  $('#room4').removeClass('hidden')
+  $('.for-screen-hiding').removeClass('hidden')
+  $('.logged-in-forms').addClass('hidden')
+  $('.game-actions').addClass('hidden')
+  $('.user-actions').css('display', 'flex')
   $('.game-text').html(gamescripts.intro)
 }
 
