@@ -22,20 +22,20 @@ const newGameFailure = function () {
 }
 
 const indexGamesSuccess = function (res) {
-  console.log(res)
+  console.log(res.games)
   let gamesHtml = ''
 
   res.games.forEach(game => {
-    const gameAreas = []
-    game.areas.forEach(area => gameAreas.push(' ' + area))
+    const inventory = []
+    game.inventory.forEach(item => inventory.push(' ' + item))
     gamesHtml += `
     <h5>Game ID:</h5>
     <p>${game._id}</p>
     <h5>Game started:</h5>
     <p>${game.createdAt}
-    <h5>Areas traveled:</h5>
+    <h5>Items collected:</h5>
     `
-    if (game.areas.length === 0) {
+    if (game.inventory.length === 0) {
       gamesHtml +=
       `
       <p>None</p>
@@ -46,7 +46,7 @@ const indexGamesSuccess = function (res) {
     } else {
       gamesHtml +=
       `
-      <p>${gameAreas}</p>
+      <p>${inventory}</p>
       <p>----------------</p>
       <br>
       <br>
