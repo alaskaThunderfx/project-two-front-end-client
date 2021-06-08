@@ -49,16 +49,16 @@ const onAction = function (event, btnId) {
   if (store.game.currentArea === 'livingRoom') {
     console.log('current area = livingRoom')
     if (btnId === 'inspect') {
-      if (livingRoomItems.items.includes(object.object)) {
-        ui.inspectSuccess(object.object)
+      if (livingRoomItems.items.includes(object.object.toLowerCase().toLowerCase())) {
+        ui.inspectSuccess(object.object.toLowerCase())
       } else {
-        $('.user-action-messages').html(`There is either no ${object.object} here, or this action cannot be performed on this object.`)
+        $('.user-action-messages').html(`There is either no ${object.object.toLowerCase()} here, or this action cannot be performed on this object.`)
         $('#action-buttons').trigger('reset')
       }
     } else if (btnId === 'open') {
-      if (livingRoomItems.items.includes(object.object)) {
+      if (livingRoomItems.items.includes(object.object.toLowerCase())) {
       // for the table drawer
-        if (object.object === 'drawer') {
+        if (object.object.toLowerCase() === 'drawer') {
           if (store.game.rooms[0].livingRoom.table.isOpen === 'false') {
             const gameData = {
               game: {
@@ -76,9 +76,9 @@ const onAction = function (event, btnId) {
               .then(ui.openSuccess)
               .catch(ui.openFailure)
           }
-        } else if (object.object === 'second door') {
+        } else if (object.object.toLowerCase() === 'second door') {
           if (store.game.rooms[0].livingRoom.doors[0].diningRoom.isLocked === 'true') {
-            ui.openFailure(object.object)
+            ui.openFailure(object.object.toLowerCase())
           } else {
             const gameData = {
               game: {
@@ -96,18 +96,18 @@ const onAction = function (event, btnId) {
                 }
               }
             }
-            store.object = object.object
+            store.object = object.object.toLowerCase()
             api.updateGame(gameData)
               .then(ui.openSuccess(object))
           }
         }
       } else {
-        $('.user-action-messages').html(`There is either no ${object.object} here, or this action cannot be performed on this object.`)
+        $('.user-action-messages').html(`There is either no ${object.object.toLowerCase()} here, or this action cannot be performed on this object.`)
         $('#action-buttons').trigger('reset')
       }
     } else if (btnId === 'pick-up') {
-      if (livingRoomItems.items.includes(object.object)) {
-        if (object.object === 'key') {
+      if (livingRoomItems.items.includes(object.object.toLowerCase())) {
+        if (object.object.toLowerCase() === 'key') {
           if (store.game.rooms[0].livingRoom.table.hasKey === 'true') {
             store.game.rooms[0].livingRoom.table.hasKey = 'false'
             store.game.inventory.push('key')
@@ -132,11 +132,11 @@ const onAction = function (event, btnId) {
           }
         }
       } else {
-        $('.user-action-messages').html(`There is either no ${object.object} here, or this action cannot be performed on this object.`)
+        $('.user-action-messages').html(`There is either no ${object.object.toLowerCase()} here, or this action cannot be performed on this object.`)
         $('#action-buttons').trigger('reset')
       }
     } else if (btnId === 'use') {
-      if (object.object === 'key > second door') {
+      if (object.object.toLowerCase() === 'key > second door') {
         if (store.game.inventory.includes('key')) {
           store.game.inventory.splice(store.game.inventory.indexOf('key'), 1)
           store.game.rooms[0].livingRoom.doors[0].diningRoom.isLocked = 'false'

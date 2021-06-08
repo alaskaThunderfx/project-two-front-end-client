@@ -10,7 +10,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
   min-width: 470px;
   font-family: 'VT323', monospace;
   background-color: black;
@@ -32,9 +32,8 @@ div {
     justify-content: center;
     align-items: center;
     border: dashed white 2px;
-    max-height: 83vh;
-    max-width: 50vw;
-    min-width: 470px;
+    height: 100%;
+    width: 100%;
     font-size: 20px;
   }
 
@@ -44,7 +43,7 @@ div {
     justify-content: center;
     align-items: center;
     color: white;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     object-fit: cover;
     background-color: black;
@@ -58,8 +57,9 @@ div {
     box-sizing: border-box;
     align-items: center;
     border: solid white 1px;
+    margin: 5px;
+    padding: 0px;
     width: 98%;
-    height: 98%;
   }
 
   &.game-cabinet {
@@ -103,6 +103,12 @@ p {
     margin: 5px auto;
     padding: 5px 5px;
   }
+}
+
+.for-screen-hiding {
+  min-height: 470px;
+  max-width: 50vw;
+  min-width: 470px;
 }
 
 .game-actions {
