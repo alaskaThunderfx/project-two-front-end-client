@@ -16,6 +16,9 @@ const newGameSuccess = function (res) {
   $('.game-actions').addClass('hidden')
   $('.user-actions').css('display', 'flex')
   $('.game-text').html(gamescripts.intro)
+  setTimeout(function () {
+    $('#messaging').html('Directions:<br>Throughout the story you will see underlined words.<br>These are <u>keywords</u> that you can perform actions on.<br>Enter a <u>keyword</u> in the space below and click an action you\'d like to perform on it!')
+  }, 2000)
 }
 
 const newGameFailure = function () {

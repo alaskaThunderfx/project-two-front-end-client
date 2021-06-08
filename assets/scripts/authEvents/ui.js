@@ -8,7 +8,7 @@ const signUpSuccess = function (res) {
   $('#sign-in').css('display', 'flex')
   setTimeout(function () {
     $('#messaging').html('')
-  }, 3000)
+  }, 2000)
 }
 
 const signUpFailure = function () {
@@ -25,9 +25,12 @@ const signInSuccess = function (res) {
   $('#new-user').addClass('hidden')
   $('.logged-in-forms').removeClass('hidden')
   $('.game-actions').removeClass('hidden')
+  $('.logged-in-forms').css('display: flex;')
+  $('.logged-in-forms').css('flex-direction: column;')
+  $('.logged-in-forms').css('justify-content: center;')
   setTimeout(function () {
     $('#messaging').html('')
-  }, 3000)
+  }, 2000)
   // store users data
   store.user = res.user
 }

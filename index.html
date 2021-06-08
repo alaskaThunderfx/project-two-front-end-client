@@ -25,11 +25,13 @@
             <input name="credentials[user_name]" type="text" placeholder="User Name"/>
             <input name="credentials[password]" type="password" placeholder="Password"/>
             <input name="credentials[password_confirmation]" type="password" placeholder="Confirm password"/>
+            <br>
             <button id="sign-up-button">Sign Up!</button>
           </form>
           <form id="sign-in">
             <input name="credentials[user_name]" type="text" placeholder="User Name"/>
             <input name="credentials[password]" type="password" placeholder="Password"/>
+            <br>
             <button id="sign-in-button">Sign In!</button>
           </form>
           <p class="hidden" id="new-user">Are you a new user? Click <span id="new-here"><b>here</b></span>!</p>
@@ -64,13 +66,13 @@
         </section>
         <section class="user-actions hidden">
           <form id="action-buttons">
-            <input id="object-name" name="object" type="text" placeholder="Name of object to ineract with"/>
+            <input id="object-name" name="object" type="text" placeholder="Keyword"/>
             <button class="actions" id="inspect">Inspect</button>
+            <button class="actions" id="open">Open</button>
             <button class="actions" id="pick-up">Pick up</button>
             <!-- <button class="actions" id="search">Search</button> -->
             <!-- <button class="actions" id="push">Push</button> -->
             <button class="actions" id="use">Use</button>
-            <button class="actions" id="open">Open</button>
           </form>
         </section>
         <div class="game-cabinet"></div>
