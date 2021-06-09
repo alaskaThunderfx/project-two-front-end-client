@@ -2,7 +2,6 @@ const config = require('../config.js')
 const store = require('../store.js')
 
 const signUp = function (userData) {
-  console.log('in signUp')
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-up',
@@ -11,7 +10,6 @@ const signUp = function (userData) {
 }
 
 const signIn = function (userData) {
-  console.log('in signIn')
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-in',
@@ -20,7 +18,6 @@ const signIn = function (userData) {
 }
 
 const signOut = function () {
-  console.log('in signOut')
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
@@ -31,7 +28,6 @@ const signOut = function () {
 }
 
 const changePassword = function (userData) {
-  console.log('in changePassword')
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/change-password',

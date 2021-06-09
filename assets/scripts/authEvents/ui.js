@@ -55,7 +55,6 @@ const signOutSuccess = function () {
 
   // remove users data
   store.user = null
-  console.log('in signOutSuccess')
 }
 
 const signOutFailure = function () {
@@ -67,9 +66,6 @@ const changePasswordSuccess = function (res) {
   $('#change-password').trigger('reset')
   $('#messaging').html('')
   $('#messaging').html('You\'ve changed that there password!')
-
-  console.log('in changePasswordSuccess')
-  console.log('res = ', res)
 }
 
 const changePasswordFailure = function () {

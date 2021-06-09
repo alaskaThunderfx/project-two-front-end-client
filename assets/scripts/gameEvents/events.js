@@ -7,7 +7,6 @@ const store = require('../store.js')
 
 const onNewGame = function (event) {
   event.preventDefault()
-  console.log('in onNewGame')
   const gameData = {
     game: {
       currentArea: 'livingRoom',
@@ -22,7 +21,6 @@ const onNewGame = function (event) {
 
 const onIndexGames = function (event) {
   event.preventDefault()
-  console.log('in onIndexGames')
   api.indexGames()
     .then(ui.indexGamesSuccess)
     .catch(ui.indexGamesFailure)
@@ -30,11 +28,8 @@ const onIndexGames = function (event) {
 
 const onDeleteGame = function (event) {
   event.preventDefault()
-  console.log('in onDeleteGame')
   const form = event.target
-  console.log(form)
   const gameId = getFormFields(form)
-  console.log(gameId)
   api.deleteGame(gameId)
     .then(ui.deleteGameSuccess)
     .catch(ui.deleteGameFailure)
@@ -42,11 +37,8 @@ const onDeleteGame = function (event) {
 
 const onShowGame = function (event) {
   event.preventDefault()
-  console.log('in onShowGame')
   const form = event.target
-  console.log(form)
   const gameId = getFormFields(form)
-  console.log(gameId)
   api.showGame(gameId)
     .then(ui.showGameSuccess)
     .catch(ui.showGameFailure)
@@ -54,12 +46,9 @@ const onShowGame = function (event) {
 
 const onAction = function (event, btnId) {
   event.preventDefault()
-  console.log('btnId = ', btnId)
-  console.log(btnId === 'use')
   const form = event.target
   const object = getFormFields(form)
   if (store.game.currentArea === 'livingRoom') {
-    console.log('current area = livingRoom')
     if (btnId === 'inspect') {
       if (livingRoomItems.items.includes(object.object.toLowerCase().toLowerCase())) {
         ui.inspectSuccess(object.object.toLowerCase())
@@ -173,95 +162,93 @@ const onAction = function (event, btnId) {
             .catch(ui.useFailure)
         }
       }
-      console.log('use store: ', store)
     }
   }
 }
 
-const onRoom1 = function (event) {
-  event.preventDefault()
-  const moveData = {
-    game: {
-      $push: {
-        areas: 'room1'
-      }
-    }
-  }
-  console.log('in onRoom1')
-  api.move(moveData)
-    .then(ui.room1Success)
-    .catch(ui.roomFailure)
-}
-
-const onRoom2 = function (event) {
-  event.preventDefault()
-  const moveData = {
-    game: {
-      $push: {
-        areas: 'room2'
-      }
-    }
-  }
-  console.log('in onRoom2')
-  api.move(moveData)
-    .then(ui.room2Success)
-    .catch(ui.roomFailure)
-}
-
-const onRoom3 = function (event) {
-  event.preventDefault()
-  const moveData = {
-    game: {
-      $push: {
-        areas: 'room3'
-      }
-    }
-  }
-  console.log('in onRoom3')
-  api.move(moveData)
-    .then(ui.room3Success)
-    .catch(ui.roomFailure)
-}
-
-const onRoom4 = function (event) {
-  event.preventDefault()
-  const moveData = {
-    game: {
-      $push: {
-        areas: 'room4'
-      }
-    }
-  }
-  console.log('in onRoom4')
-  api.move(moveData)
-    .then(ui.room4Success)
-    .catch(ui.roomFailure)
-}
-
-const onRoom5 = function (event) {
-  event.preventDefault()
-  const moveData = {
-    game: {
-      $push: {
-        areas: 'room5'
-      }
-    }
-  }
-  console.log('in onRoom5')
-  api.move(moveData)
-    .then(ui.room5Success)
-    .catch(ui.roomFailure)
-}
+// const onRoom1 = function (event) {
+//   event.preventDefault()
+//   const moveData = {
+//     game: {
+//       $push: {
+//         areas: 'room1'
+//       }
+//     }
+//   }
+//   api.move(moveData)
+//     .then(ui.room1Success)
+//     .catch(ui.roomFailure)
+// }
+//
+// const onRoom2 = function (event) {
+//   event.preventDefault()
+//   const moveData = {
+//     game: {
+//       $push: {
+//         areas: 'room2'
+//       }
+//     }
+//   }
+//   console.log('in onRoom2')
+//   api.move(moveData)
+//     .then(ui.room2Success)
+//     .catch(ui.roomFailure)
+// }
+//
+// const onRoom3 = function (event) {
+//   event.preventDefault()
+//   const moveData = {
+//     game: {
+//       $push: {
+//         areas: 'room3'
+//       }
+//     }
+//   }
+//   console.log('in onRoom3')
+//   api.move(moveData)
+//     .then(ui.room3Success)
+//     .catch(ui.roomFailure)
+// }
+//
+// const onRoom4 = function (event) {
+//   event.preventDefault()
+//   const moveData = {
+//     game: {
+//       $push: {
+//         areas: 'room4'
+//       }
+//     }
+//   }
+//   console.log('in onRoom4')
+//   api.move(moveData)
+//     .then(ui.room4Success)
+//     .catch(ui.roomFailure)
+// }
+//
+// const onRoom5 = function (event) {
+//   event.preventDefault()
+//   const moveData = {
+//     game: {
+//       $push: {
+//         areas: 'room5'
+//       }
+//     }
+//   }
+//   console.log('in onRoom5')
+//   api.move(moveData)
+//     .then(ui.room5Success)
+//     .catch(ui.roomFailure)
+// }
 
 module.exports = {
   onNewGame,
   onIndexGames,
   onDeleteGame,
   onShowGame,
-  onAction,
-  onRoom1,
-  onRoom2,
-  onRoom3,
-  onRoom4,
-  onRoom5
+  onAction
+  // onRoom1,
+  // onRoom2,
+  // onRoom3,
+  // onRoom4,
+  // onRoom5
 }

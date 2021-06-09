@@ -2,7 +2,6 @@ const config = require('../config.js')
 const store = require('../store.js')
 
 const newGame = function (gameData) {
-  console.log('in newGame')
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/games',
@@ -14,7 +13,6 @@ const newGame = function (gameData) {
 }
 
 const indexGames = function () {
-  console.log('in indexGames')
   return $.ajax({
     method: 'GET',
     url: config.apiUrl + '/games',
@@ -25,8 +23,6 @@ const indexGames = function () {
 }
 
 const deleteGame = function (gameId) {
-  console.log('in deleteGame')
-  console.log('gameId: ', gameId.id)
   return $.ajax({
     method: 'DELETE',
     url: config.apiUrl + '/games/' + gameId.id,
@@ -37,8 +33,6 @@ const deleteGame = function (gameId) {
 }
 
 const showGame = function (gameId) {
-  console.log('in showGame')
-  console.log('gameId: ', gameId.id)
   return $.ajax({
     method: 'GET',
     url: config.apiUrl + '/games/' + gameId.id,
@@ -49,7 +43,6 @@ const showGame = function (gameId) {
 }
 
 const move = function (moveData) {
-  console.log('in move')
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/games/' + store.game._id,
@@ -71,12 +64,12 @@ const updateGame = function (gameData) {
   })
 }
 
-const action = function (object) {
-  console.log('In action')
-  console.log('The object is: ', object)
-  store.object = object
-  console.log('The stored object is: ', store.object)
-}
+// const action = function (object) {
+//   console.log('In action')
+//   console.log('The object is: ', object)
+//   store.object = object
+//   console.log('The stored object is: ', store.object)
+// }
 
 module.exports = {
   newGame,
@@ -84,6 +77,6 @@ module.exports = {
   deleteGame,
   showGame,
   move,
-  action,
+  // action,
   updateGame
 }
