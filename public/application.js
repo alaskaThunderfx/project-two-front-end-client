@@ -16623,9 +16623,7 @@ $(function () {
 
   $('.actions').on('click', function (event) {
     event.preventDefault();
-    console.log('pressing a button');
     var btnId = $(event.target).attr('id');
-    console.log('button id= ', btnId);
     $('#action-buttons').trigger('submit', btnId);
   });
   $('#action-buttons').on('submit', gameEvents.onAction);
@@ -16651,35 +16649,27 @@ var ui = __webpack_require__(343);
 
 var onSignUp = function onSignUp(event) {
   event.preventDefault();
-  console.log('in OnSignUp');
   var form = event.target;
   var userData = getFormFields(form);
-  console.log('UserData: ', userData);
   api.signUp(userData).then(ui.signUpSuccess).catch(ui.signUpFailure);
 };
 
 var onSignIn = function onSignIn(event) {
   event.preventDefault();
-  console.log('in onSignIn');
   var form = event.target;
-  console.log('This is from the form: ', form);
   var userData = getFormFields(form);
-  console.log('userData: ', userData);
   api.signIn(userData).then(ui.signInSuccess).catch(ui.signInFailure);
 };
 
 var onSignOut = function onSignOut(event) {
   event.preventDefault();
-  console.log('in onSignOut');
   api.signOut().then(ui.signOutSuccess).catch(ui.signOutFailure);
 };
 
 var onChangePassword = function onChangePassword(event) {
   event.preventDefault();
-  console.log('in onChangePassword');
   var form = event.target;
   var userData = getFormFields(form);
-  console.log('userData: ', userData);
   api.changePassword(userData).then(ui.changePasswordSuccess).catch(ui.changePasswordFailure);
 };
 
@@ -16753,7 +16743,6 @@ var config = __webpack_require__(133);
 var store = __webpack_require__(53);
 
 var signUp = function signUp(userData) {
-  console.log('in signUp');
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-up',
@@ -16762,7 +16751,6 @@ var signUp = function signUp(userData) {
 };
 
 var signIn = function signIn(userData) {
-  console.log('in signIn');
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-in',
@@ -16771,7 +16759,6 @@ var signIn = function signIn(userData) {
 };
 
 var signOut = function signOut() {
-  console.log('in signOut');
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
@@ -16782,7 +16769,6 @@ var signOut = function signOut() {
 };
 
 var changePassword = function changePassword(userData) {
-  console.log('in changePassword');
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/change-password',
@@ -16865,7 +16851,6 @@ var signOutSuccess = function signOutSuccess() {
 
   // remove users data
   store.user = null;
-  console.log('in signOutSuccess');
 };
 
 var signOutFailure = function signOutFailure() {
@@ -16877,9 +16862,6 @@ var changePasswordSuccess = function changePasswordSuccess(res) {
   $('#change-password').trigger('reset');
   $('#messaging').html('');
   $('#messaging').html('You\'ve changed that there password!');
-
-  console.log('in changePasswordSuccess');
-  console.log('res = ', res);
 };
 
 var changePasswordFailure = function changePasswordFailure() {
@@ -16915,7 +16897,6 @@ var store = __webpack_require__(53);
 
 var onNewGame = function onNewGame(event) {
   event.preventDefault();
-  console.log('in onNewGame');
   var gameData = {
     game: {
       currentArea: 'livingRoom',
@@ -16928,38 +16909,28 @@ var onNewGame = function onNewGame(event) {
 
 var onIndexGames = function onIndexGames(event) {
   event.preventDefault();
-  console.log('in onIndexGames');
   api.indexGames().then(ui.indexGamesSuccess).catch(ui.indexGamesFailure);
 };
 
 var onDeleteGame = function onDeleteGame(event) {
   event.preventDefault();
-  console.log('in onDeleteGame');
   var form = event.target;
-  console.log(form);
   var gameId = getFormFields(form);
-  console.log(gameId);
   api.deleteGame(gameId).then(ui.deleteGameSuccess).catch(ui.deleteGameFailure);
 };
 
 var onShowGame = function onShowGame(event) {
   event.preventDefault();
-  console.log('in onShowGame');
   var form = event.target;
-  console.log(form);
   var gameId = getFormFields(form);
-  console.log(gameId);
   api.showGame(gameId).then(ui.showGameSuccess).catch(ui.showGameFailure);
 };
 
 var onAction = function onAction(event, btnId) {
   event.preventDefault();
-  console.log('btnId = ', btnId);
-  console.log(btnId === 'use');
   var form = event.target;
   var object = getFormFields(form);
   if (store.game.currentArea === 'livingRoom') {
-    console.log('current area = livingRoom');
     if (btnId === 'inspect') {
       if (livingRoomItems.items.includes(object.object.toLowerCase().toLowerCase())) {
         ui.inspectSuccess(object.object.toLowerCase());
@@ -17066,87 +17037,95 @@ var onAction = function onAction(event, btnId) {
           api.updateGame(_gameData3).then(ui.useSuccess).catch(ui.useFailure);
         }
       }
-      console.log('use store: ', store);
     }
   }
 };
 
-var onRoom1 = function onRoom1(event) {
-  event.preventDefault();
-  var moveData = {
-    game: {
-      $push: {
-        areas: 'room1'
-      }
-    }
-  };
-  console.log('in onRoom1');
-  api.move(moveData).then(ui.room1Success).catch(ui.roomFailure);
-};
-
-var onRoom2 = function onRoom2(event) {
-  event.preventDefault();
-  var moveData = {
-    game: {
-      $push: {
-        areas: 'room2'
-      }
-    }
-  };
-  console.log('in onRoom2');
-  api.move(moveData).then(ui.room2Success).catch(ui.roomFailure);
-};
-
-var onRoom3 = function onRoom3(event) {
-  event.preventDefault();
-  var moveData = {
-    game: {
-      $push: {
-        areas: 'room3'
-      }
-    }
-  };
-  console.log('in onRoom3');
-  api.move(moveData).then(ui.room3Success).catch(ui.roomFailure);
-};
-
-var onRoom4 = function onRoom4(event) {
-  event.preventDefault();
-  var moveData = {
-    game: {
-      $push: {
-        areas: 'room4'
-      }
-    }
-  };
-  console.log('in onRoom4');
-  api.move(moveData).then(ui.room4Success).catch(ui.roomFailure);
-};
-
-var onRoom5 = function onRoom5(event) {
-  event.preventDefault();
-  var moveData = {
-    game: {
-      $push: {
-        areas: 'room5'
-      }
-    }
-  };
-  console.log('in onRoom5');
-  api.move(moveData).then(ui.room5Success).catch(ui.roomFailure);
-};
+// const onRoom1 = function (event) {
+//   event.preventDefault()
+//   const moveData = {
+//     game: {
+//       $push: {
+//         areas: 'room1'
+//       }
+//     }
+//   }
+//   api.move(moveData)
+//     .then(ui.room1Success)
+//     .catch(ui.roomFailure)
+// }
+//
+// const onRoom2 = function (event) {
+//   event.preventDefault()
+//   const moveData = {
+//     game: {
+//       $push: {
+//         areas: 'room2'
+//       }
+//     }
+//   }
+//   console.log('in onRoom2')
+//   api.move(moveData)
+//     .then(ui.room2Success)
+//     .catch(ui.roomFailure)
+// }
+//
+// const onRoom3 = function (event) {
+//   event.preventDefault()
+//   const moveData = {
+//     game: {
+//       $push: {
+//         areas: 'room3'
+//       }
+//     }
+//   }
+//   console.log('in onRoom3')
+//   api.move(moveData)
+//     .then(ui.room3Success)
+//     .catch(ui.roomFailure)
+// }
+//
+// const onRoom4 = function (event) {
+//   event.preventDefault()
+//   const moveData = {
+//     game: {
+//       $push: {
+//         areas: 'room4'
+//       }
+//     }
+//   }
+//   console.log('in onRoom4')
+//   api.move(moveData)
+//     .then(ui.room4Success)
+//     .catch(ui.roomFailure)
+// }
+//
+// const onRoom5 = function (event) {
+//   event.preventDefault()
+//   const moveData = {
+//     game: {
+//       $push: {
+//         areas: 'room5'
+//       }
+//     }
+//   }
+//   console.log('in onRoom5')
+//   api.move(moveData)
+//     .then(ui.room5Success)
+//     .catch(ui.roomFailure)
+// }
 
 module.exports = {
   onNewGame: onNewGame,
   onIndexGames: onIndexGames,
   onDeleteGame: onDeleteGame,
   onShowGame: onShowGame,
-  onAction: onAction,
-  onRoom1: onRoom1,
-  onRoom2: onRoom2,
-  onRoom3: onRoom3,
-  onRoom4: onRoom4,
-  onRoom5: onRoom5
+  onAction: onAction
+  // onRoom1,
+  // onRoom2,
+  // onRoom3,
+  // onRoom4,
+  // onRoom5
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27)))
 
@@ -17161,7 +17140,6 @@ var config = __webpack_require__(133);
 var store = __webpack_require__(53);
 
 var newGame = function newGame(gameData) {
-  console.log('in newGame');
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/games',
@@ -17173,7 +17151,6 @@ var newGame = function newGame(gameData) {
 };
 
 var indexGames = function indexGames() {
-  console.log('in indexGames');
   return $.ajax({
     method: 'GET',
     url: config.apiUrl + '/games',
@@ -17184,8 +17161,6 @@ var indexGames = function indexGames() {
 };
 
 var deleteGame = function deleteGame(gameId) {
-  console.log('in deleteGame');
-  console.log('gameId: ', gameId.id);
   return $.ajax({
     method: 'DELETE',
     url: config.apiUrl + '/games/' + gameId.id,
@@ -17196,8 +17171,6 @@ var deleteGame = function deleteGame(gameId) {
 };
 
 var showGame = function showGame(gameId) {
-  console.log('in showGame');
-  console.log('gameId: ', gameId.id);
   return $.ajax({
     method: 'GET',
     url: config.apiUrl + '/games/' + gameId.id,
@@ -17208,7 +17181,6 @@ var showGame = function showGame(gameId) {
 };
 
 var move = function move(moveData) {
-  console.log('in move');
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/games/' + store.game._id,
@@ -17230,12 +17202,12 @@ var updateGame = function updateGame(gameData) {
   });
 };
 
-var action = function action(object) {
-  console.log('In action');
-  console.log('The object is: ', object);
-  store.object = object;
-  console.log('The stored object is: ', store.object);
-};
+// const action = function (object) {
+//   console.log('In action')
+//   console.log('The object is: ', object)
+//   store.object = object
+//   console.log('The stored object is: ', store.object)
+// }
 
 module.exports = {
   newGame: newGame,
@@ -17243,7 +17215,7 @@ module.exports = {
   deleteGame: deleteGame,
   showGame: showGame,
   move: move,
-  action: action,
+  // action,
   updateGame: updateGame
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27)))
@@ -17264,8 +17236,6 @@ var livingRoomUse = __webpack_require__(351);
 
 var newGameSuccess = function newGameSuccess(res) {
   store.game = res.game;
-  console.log('Res: ', res);
-  console.log('Store: ', store);
   $('#messaging').html('');
   $('#messaging').html('New game created!');
   $('.for-screen-hiding').removeClass('hidden');
@@ -17284,7 +17254,6 @@ var newGameFailure = function newGameFailure() {
 };
 
 var indexGamesSuccess = function indexGamesSuccess(res) {
-  console.log(res.games);
   var gamesHtml = '';
 
   res.games.forEach(function (game) {
@@ -17309,7 +17278,6 @@ var indexGamesFailure = function indexGamesFailure() {
 };
 
 var showGameSuccess = function showGameSuccess(res) {
-  console.log(res.game);
   var gamesHtml = '';
   var inventory = [];
   res.game.inventory.forEach(function (item) {
@@ -17331,7 +17299,6 @@ var showGameFailure = function showGameFailure(res) {
 };
 
 var deleteGameSuccess = function deleteGameSuccess(res) {
-  console.log(res);
   $('#delete-game').trigger('reset');
   $('#messaging').html('');
   $('#messaging').html('Game deleted!');
@@ -17346,7 +17313,6 @@ var deleteGameFailure = function deleteGameFailure() {
 // Just trying to make this work for the first room=
 var inspectSuccess = function inspectSuccess(object) {
   // for livingRoom
-  console.log(object);
   if (object === 'sofa') {
     $('.user-action-messages').html(livingRoomInspect.sofa);
   } else if (object === 'door' || object === 'doors') {
@@ -17371,14 +17337,11 @@ var inspectSuccess = function inspectSuccess(object) {
 
 var openSuccess = function openSuccess(object) {
   $('.user-action-messages').html(livingRoomOpen.drawer);
-  if (object === 'second door') {
-    console.log('works');
-  }
+  if (object === 'second door') {}
   $('#action-buttons').trigger('reset');
 };
 
 var openFailure = function openFailure(object) {
-  console.log(object);
   if (object === 'second door') {
     $('.user-action-messages').html(livingRoomOpen.secondDoorLocked);
   }
@@ -17395,67 +17358,59 @@ var useSuccess = function useSuccess(res) {
   $('#action-buttons').trigger('reset');
 };
 
-var room1Success = function room1Success(res) {
-  $('#room2').removeClass('hidden');
-  $('#room4').removeClass('hidden');
-  $('#room1').addClass('hidden');
-  $('#room3').addClass('hidden');
-  $('#room5').addClass('hidden');
-  store.game.areas.push('room1');
-  console.log('Res: ', res);
-  console.log('Store: ', store);
-  $('.game-text').html(gamescripts.room1);
-};
-
-var room2Success = function room2Success(res) {
-  $('#room1').removeClass('hidden');
-  $('#room3').removeClass('hidden');
-  $('#room2').addClass('hidden');
-  $('#room4').addClass('hidden');
-  store.game.areas.push('room2');
-  $('.game-text').html(gamescripts.room2);
-  console.log('Res: ', res);
-  console.log('Store: ', store);
-};
-
-var room3Success = function room3Success(res) {
-  $('#room2').removeClass('hidden');
-  $('#room4').removeClass('hidden');
-  $('#room1').addClass('hidden');
-  $('#room3').addClass('hidden');
-  store.game.areas.push('room3');
-  console.log('Res: ', res);
-  console.log('Store: ', store);
-  $('.game-text').html(gamescripts.room3);
-};
-
-var room4Success = function room4Success(res) {
-  $('#room1').removeClass('hidden');
-  $('#room3').removeClass('hidden');
-  $('#room5').removeClass('hidden');
-  $('#room2').addClass('hidden');
-  $('#room4').addClass('hidden');
-  store.game.areas.push('room4');
-  console.log('Res: ', res);
-  console.log('Store: ', store);
-  $('.game-text').html(gamescripts.room4);
-};
-
-var room5Success = function room5Success(res) {
-  $('#room4').removeClass('hidden');
-  $('#room1').addClass('hidden');
-  $('#room3').addClass('hidden');
-  $('#room5').addClass('hidden');
-  store.game.areas.push('room5');
-  console.log('Res: ', res);
-  console.log('Store: ', store);
-  $('.game-text').html(gamescripts.room5);
-};
-
-var roomFailure = function roomFailure() {
-  $('#messaging').html('');
-  $('#messaging').html('You\'re.... You\'re still in the same room...');
-};
+// const room1Success = function (res) {
+//   $('#room2').removeClass('hidden')
+//   $('#room4').removeClass('hidden')
+//   $('#room1').addClass('hidden')
+//   $('#room3').addClass('hidden')
+//   $('#room5').addClass('hidden')
+//   store.game.areas.push('room1')
+//   console.log('Res: ', res)
+//   console.log('Store: ', store)
+//   $('.game-text').html(gamescripts.room1)
+// }
+//
+// const room2Success = function (res) {
+//   $('#room1').removeClass('hidden')
+//   $('#room3').removeClass('hidden')
+//   $('#room2').addClass('hidden')
+//   $('#room4').addClass('hidden')
+//   store.game.areas.push('room2')
+//   $('.game-text').html(gamescripts.room2)
+// }
+//
+// const room3Success = function (res) {
+//   $('#room2').removeClass('hidden')
+//   $('#room4').removeClass('hidden')
+//   $('#room1').addClass('hidden')
+//   $('#room3').addClass('hidden')
+//   store.game.areas.push('room3')
+//   $('.game-text').html(gamescripts.room3)
+// }
+//
+// const room4Success = function (res) {
+//   $('#room1').removeClass('hidden')
+//   $('#room3').removeClass('hidden')
+//   $('#room5').removeClass('hidden')
+//   $('#room2').addClass('hidden')
+//   $('#room4').addClass('hidden')
+//   store.game.areas.push('room4')
+//   $('.game-text').html(gamescripts.room4)
+// }
+//
+// const room5Success = function (res) {
+//   $('#room4').removeClass('hidden')
+//   $('#room1').addClass('hidden')
+//   $('#room3').addClass('hidden')
+//   $('#room5').addClass('hidden')
+//   store.game.areas.push('room5')
+//   $('.game-text').html(gamescripts.room5)
+// }
+//
+// const roomFailure = function () {
+//   $('#messaging').html('')
+//   $('#messaging').html('You\'re.... You\'re still in the same room...')
+// }
 
 module.exports = {
   newGameSuccess: newGameSuccess,
@@ -17470,13 +17425,13 @@ module.exports = {
   openSuccess: openSuccess,
   openFailure: openFailure,
   useSuccess: useSuccess,
-  pickUpSuccess: pickUpSuccess,
-  room1Success: room1Success,
-  room2Success: room2Success,
-  room3Success: room3Success,
-  room4Success: room4Success,
-  room5Success: room5Success,
-  roomFailure: roomFailure
+  pickUpSuccess: pickUpSuccess
+  // room1Success,
+  // room2Success,
+  // room3Success,
+  // room4Success,
+  // room5Success,
+  // roomFailure
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27)))
 
