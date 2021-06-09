@@ -36,6 +36,18 @@ const deleteGame = function (gameId) {
   })
 }
 
+const showGame = function (gameId) {
+  console.log('in showGame')
+  console.log('gameId: ', gameId.id)
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/games/' + gameId.id,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
 const move = function (moveData) {
   console.log('in move')
   return $.ajax({
@@ -70,6 +82,7 @@ module.exports = {
   newGame,
   indexGames,
   deleteGame,
+  showGame,
   move,
   action,
   updateGame

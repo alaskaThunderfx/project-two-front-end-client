@@ -40,6 +40,18 @@ const onDeleteGame = function (event) {
     .catch(ui.deleteGameFailure)
 }
 
+const onShowGame = function (event) {
+  event.preventDefault()
+  console.log('in onShowGame')
+  const form = event.target
+  console.log(form)
+  const gameId = getFormFields(form)
+  console.log(gameId)
+  api.showGame(gameId)
+    .then(ui.showGameSuccess)
+    .catch(ui.showGameFailure)
+}
+
 const onAction = function (event, btnId) {
   event.preventDefault()
   console.log('btnId = ', btnId)
@@ -245,6 +257,7 @@ module.exports = {
   onNewGame,
   onIndexGames,
   onDeleteGame,
+  onShowGame,
   onAction,
   onRoom1,
   onRoom2,

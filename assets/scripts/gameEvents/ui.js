@@ -67,6 +67,18 @@ const indexGamesFailure = function () {
   $('#messaging').html('Index failed... What you can\'t even list a few games?? Get oudda herrreee...')
 }
 
+const showGameSuccess = function (res) {
+  console.log(res.games)
+
+  $('.game-cabinet').html()
+}
+
+const showGameFailure = function (res) {
+  $('#messaging').html('Can\'t show you any games... Sry...')
+
+  $('.game-cabinet').html()
+}
+
 const deleteGameSuccess = function (res) {
   console.log(res)
   $('#delete-game').trigger('reset')
@@ -201,6 +213,8 @@ module.exports = {
   indexGamesFailure,
   deleteGameSuccess,
   deleteGameFailure,
+  showGameSuccess,
+  showGameFailure,
   inspectSuccess,
   openSuccess,
   openFailure,

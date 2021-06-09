@@ -63,9 +63,10 @@ div {
   }
 
   &.game-cabinet {
-    display: flex;
+    display: inline-block;
     flex-direction: column;
-    max-width: 50vw;
+    max-width: 470px;
+    max-height: 300px;
     align-items: center;
     text-transform: capitalize;
   }

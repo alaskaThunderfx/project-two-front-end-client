@@ -21,6 +21,7 @@ $(() => {
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#index-games').on('click', gameEvents.onIndexGames)
   $('#delete-game').on('submit', gameEvents.onDeleteGame)
+  $('#show-game').on('submit', gameEvents.onShowGame)
 
   $('.actions').on('click', event => {
     event.preventDefault()
