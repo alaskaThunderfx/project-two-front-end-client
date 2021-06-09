@@ -41,8 +41,17 @@ const signInFailure = function () {
 }
 
 const signOutSuccess = function () {
-  $('#messaging').html('')
   $('#messaging').html('You\'ve signed out! Ta ta!')
+  $('.for-screen-hiding').addClass('hidden')
+  $('.logged-in-forms').addClass('hidden')
+  $('.game-actions').addClass('hidden')
+  $('.user-actions').css('display', 'none')
+  $('#sign-up').css('display', 'flex')
+  $('#returning-user').removeClass('hidden')
+  $('.game-text').html('')
+  setTimeout(function () {
+    $('#messaging').html('')
+  }, 2000)
 
   // remove users data
   store.user = null
