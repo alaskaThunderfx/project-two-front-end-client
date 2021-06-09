@@ -17,7 +17,7 @@
       </style>
     </head>
     <body>
-      <div>
+      <div class="main-container">
         <h1 class="title">Escape</h1>
         <p id="messaging"></p>
         <section class="intro-forms">
@@ -71,12 +71,16 @@
         <section class="user-actions hidden">
           <form id="action-buttons">
             <input id="object-name" name="object" type="text" placeholder="Keyword"/>
+            <section class="left-action-buttons">
             <button class="actions" id="inspect">Inspect</button>
             <button class="actions" id="open">Open</button>
+            </section>
+            <section class="right-action-buttons">
             <button class="actions" id="pick-up">Pick up</button>
             <!-- <button class="actions" id="search">Search</button> -->
             <!-- <button class="actions" id="push">Push</button> -->
             <button class="actions" id="use">Use</button>
+          </section>
           </form>
         </section>
         <div class="game-cabinet"></div>
