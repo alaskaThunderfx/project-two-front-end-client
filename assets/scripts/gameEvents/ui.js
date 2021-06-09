@@ -68,9 +68,35 @@ const indexGamesFailure = function () {
 }
 
 const showGameSuccess = function (res) {
-  console.log(res.games)
-
-  $('.game-cabinet').html()
+  console.log(res.game)
+  let gamesHtml = ''
+  const inventory = []
+  res.game.inventory.forEach(item => inventory.push(' ' + item))
+  gamesHtml += `
+  <h5>Game ID:</h5>
+  <p>${res.game._id}</p>
+  <h5>Game started:</h5>
+  <p>${res.game.createdAt}
+  <h5>Items collected:</h5>
+  `
+  if (res.game.inventory.length === 0) {
+    gamesHtml +=
+    `
+    <p>None</p>
+    <p>----------------</p>
+    <br>
+    <br>
+    `
+  } else {
+    gamesHtml +=
+    `
+    <p>${inventory}</p>
+    <p>----------------</p>
+    <br>
+    <br>
+    `
+  }
+  $('.game-cabinet').html(gamesHtml)
 }
 
 const showGameFailure = function (res) {
