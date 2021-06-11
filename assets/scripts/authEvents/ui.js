@@ -17,17 +17,21 @@ const signUpFailure = function () {
 }
 
 const signInSuccess = function (res) {
+  $('#change-password').css('display', 'flex')
   $('#sign-in').trigger('reset')
   $('#messaging').html('')
   $('#messaging').html('You\'ve signed in!')
+  $('#messaging').css('grid-row', '2')
+  $('#messaging').css('grid-column', '2')
   $('#sign-in').css('display', 'none')
   $('#returning-user').addClass('hidden')
   $('#new-user').addClass('hidden')
   $('.logged-in-forms').removeClass('hidden')
   $('.game-actions').removeClass('hidden')
-  $('.logged-in-forms').css('display: flex;')
-  $('.logged-in-forms').css('flex-direction: column;')
-  $('.logged-in-forms').css('justify-content: center;')
+  $('.game-actions').removeClass('')
+  $('.logged-in-forms').css('display', 'flex')
+  $('.logged-in-forms').css('flex-direction', 'column')
+  $('.logged-in-forms').css('justify-content', 'center')
   setTimeout(function () {
     $('#messaging').html('')
   }, 2000)
@@ -47,6 +51,7 @@ const signOutSuccess = function () {
   $('.game-actions').addClass('hidden')
   $('.user-actions').css('display', 'none')
   $('#sign-up').css('display', 'flex')
+  $('#sign-out').css('display', 'none')
   $('#returning-user').removeClass('hidden')
   $('.game-text').html('')
   setTimeout(function () {
