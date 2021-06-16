@@ -53,7 +53,7 @@ const onAction = function (event, btnId) {
       if (livingRoomItems.items.includes(object.object.toLowerCase().toLowerCase())) {
         ui.inspectSuccess(object.object.toLowerCase())
       } else {
-        $('.user-action-messages').html(`There is either no ${object.object.toLowerCase()} here, or this action cannot be performed on this object.`)
+        $('.user-action-messages').html('This either not here, or this action cannot be performed on this object.')
         $('#action-buttons').trigger('reset')
       }
     } else if (btnId === 'open') {
@@ -101,10 +101,10 @@ const onAction = function (event, btnId) {
             api.updateGame(gameData)
               .then(ui.openSuccess(object))
           }
+        } else {
+          $('.user-action-messages').html('This is either not here, or this action cannot be performed on this object.')
+          $('#action-buttons').trigger('reset')
         }
-      } else {
-        $('.user-action-messages').html(`There is either no ${object.object.toLowerCase()} here, or this action cannot be performed on this object.`)
-        $('#action-buttons').trigger('reset')
       }
     } else if (btnId === 'pick-up') {
       if (livingRoomItems.items.includes(object.object.toLowerCase())) {
@@ -131,10 +131,10 @@ const onAction = function (event, btnId) {
               .then(ui.pickUpSuccess)
               .catch(ui.pickUpFailure)
           }
+        } else {
+          $('.user-action-messages').html('This is either not here, or this action cannot be performed on this object.')
+          $('#action-buttons').trigger('reset')
         }
-      } else {
-        $('.user-action-messages').html(`There is either no ${object.object.toLowerCase()} here, or this action cannot be performed on this object.`)
-        $('#action-buttons').trigger('reset')
       }
     } else if (btnId === 'use') {
       if (object.object.toLowerCase() === 'key > second door') {
@@ -161,9 +161,16 @@ const onAction = function (event, btnId) {
             .then(ui.useSuccess)
             .catch(ui.useFailure)
         }
+      } else {
+        $('.user-action-messages').html('This is either not here, or this action cannot be performed on this object.')
+        $('#action-buttons').trigger('reset')
       }
     }
   }
+}
+
+const populateKeyword = function () {
+  console.log('Pressed sofa')
 }
 
 // const onRoom1 = function (event) {
@@ -245,7 +252,8 @@ module.exports = {
   onIndexGames,
   onDeleteGame,
   onShowGame,
-  onAction
+  onAction,
+  populateKeyword
   // onRoom1,
   // onRoom2,
   // onRoom3,

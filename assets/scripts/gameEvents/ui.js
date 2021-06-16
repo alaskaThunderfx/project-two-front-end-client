@@ -16,7 +16,7 @@ const newGameSuccess = function (res) {
   $('#messaging').html('New game created!')
   $('#messaging').css('grid-area', '2 / 2 / auto / auto')
   $('#messaging').css('position', 'relative')
-  $('#messaging').css('top', '-180%')
+  $('#messaging').css('top', '-325%')
   $('.for-screen-hiding').removeClass('hidden')
   $('#change-password').css('display', 'none')
   $('h1').css('grid-row', '1')
@@ -24,7 +24,7 @@ const newGameSuccess = function (res) {
   $('h1').css('align-item', 'top')
   $('h1').css('display', 'flex')
   $('h1').css('position', 'relative')
-  $('h1').css('top', '-100%')
+  $('h1').css('top', '-85%')
   $('.game-actions').addClass('hidden')
   $('.user-actions').css('display', 'flex')
   $('.user-actions').css('position', 'absolute')
@@ -34,6 +34,7 @@ const newGameSuccess = function (res) {
   $('.game-text').html(gamescripts.intro)
   setTimeout(function () {
     $('#messaging').html('Directions:<br>Throughout the story you will see underlined words.<br>These are <u>keywords</u> that you can perform actions on.<br>Enter a <u>keyword</u> in the space below and click an action you\'d like to perform on it!')
+    $('#messaging').css('top', '-167%')
   }, 2000)
 }
 

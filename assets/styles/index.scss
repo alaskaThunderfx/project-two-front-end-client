@@ -64,6 +64,10 @@ div {
     padding: 0px;
     width: 98%;
     height: 98%;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 20px;
+    }
   }
 
   &.game-cabinet {
@@ -140,7 +144,7 @@ section {
   top: -21%;
   grid-column: 1 / span 3;
   grid-row: 4 / span2;
-  height: 137%;
+  height: 120%;
   min-height: 470px;
   max-width: 50vw;
   min-width: 470px;
@@ -192,6 +196,8 @@ section {
 }
 
 #messaging {
+  position: relative;
+  top: 0%;
   max-width: 50vw;
   min-width: 470px;
 }

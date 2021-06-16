@@ -17,22 +17,20 @@ $(() => {
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#change-password').on('submit', authEvents.onChangePassword)
   // user account actions ends
+
   // game actions begin
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#index-games').on('click', gameEvents.onIndexGames)
   $('#delete-game').on('submit', gameEvents.onDeleteGame)
   $('#show-game').on('submit', gameEvents.onShowGame)
-
   $('.actions').on('click', event => {
     event.preventDefault()
     const btnId = $(event.target).attr('id')
     $('#action-buttons').trigger('submit', btnId)
   })
   $('#action-buttons').on('submit', gameEvents.onAction)
+  // game actions end
 
-  $('#room1').on('click', gameEvents.onRoom1)
-  $('#room2').on('click', gameEvents.onRoom2)
-  $('#room3').on('click', gameEvents.onRoom3)
-  $('#room4').on('click', gameEvents.onRoom4)
-  $('#room5').on('click', gameEvents.onRoom5)
+  // clicked word population
+  $('#sofa').click(gameEvents.populateKeyword)
 })
