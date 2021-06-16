@@ -181,60 +181,6 @@ const useSuccess = function (res) {
   $('#action-buttons').trigger('reset')
 }
 
-// const room1Success = function (res) {
-//   $('#room2').removeClass('hidden')
-//   $('#room4').removeClass('hidden')
-//   $('#room1').addClass('hidden')
-//   $('#room3').addClass('hidden')
-//   $('#room5').addClass('hidden')
-//   store.game.areas.push('room1')
-//   console.log('Res: ', res)
-//   console.log('Store: ', store)
-//   $('.game-text').html(gamescripts.room1)
-// }
-//
-// const room2Success = function (res) {
-//   $('#room1').removeClass('hidden')
-//   $('#room3').removeClass('hidden')
-//   $('#room2').addClass('hidden')
-//   $('#room4').addClass('hidden')
-//   store.game.areas.push('room2')
-//   $('.game-text').html(gamescripts.room2)
-// }
-//
-// const room3Success = function (res) {
-//   $('#room2').removeClass('hidden')
-//   $('#room4').removeClass('hidden')
-//   $('#room1').addClass('hidden')
-//   $('#room3').addClass('hidden')
-//   store.game.areas.push('room3')
-//   $('.game-text').html(gamescripts.room3)
-// }
-//
-// const room4Success = function (res) {
-//   $('#room1').removeClass('hidden')
-//   $('#room3').removeClass('hidden')
-//   $('#room5').removeClass('hidden')
-//   $('#room2').addClass('hidden')
-//   $('#room4').addClass('hidden')
-//   store.game.areas.push('room4')
-//   $('.game-text').html(gamescripts.room4)
-// }
-//
-// const room5Success = function (res) {
-//   $('#room4').removeClass('hidden')
-//   $('#room1').addClass('hidden')
-//   $('#room3').addClass('hidden')
-//   $('#room5').addClass('hidden')
-//   store.game.areas.push('room5')
-//   $('.game-text').html(gamescripts.room5)
-// }
-//
-// const roomFailure = function () {
-//   $('#messaging').html('')
-//   $('#messaging').html('You\'re.... You\'re still in the same room...')
-// }
-
 module.exports = {
   newGameSuccess,
   newGameFailure,
@@ -249,10 +195,4 @@ module.exports = {
   openFailure,
   useSuccess,
   pickUpSuccess
-  // room1Success,
-  // room2Success,
-  // room3Success,
-  // room4Success,
-  // room5Success,
-  // roomFailure
 }

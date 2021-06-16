@@ -63,14 +63,6 @@ const updateGame = function (gameData) {
     }
   })
 }
-
-// const action = function (object) {
-//   console.log('In action')
-//   console.log('The object is: ', object)
-//   store.object = object
-//   console.log('The stored object is: ', store.object)
-// }
-
 module.exports = {
   newGame,
   indexGames,

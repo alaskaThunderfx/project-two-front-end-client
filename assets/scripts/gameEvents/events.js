@@ -112,7 +112,6 @@ const onAction = function (event, btnId) {
           if (store.game.rooms[0].livingRoom.table.hasKey === 'true') {
             store.game.rooms[0].livingRoom.table.hasKey = 'false'
             store.game.inventory.push('key')
-            console.log(store.game.inventory)
             const gameData = {
               game: {
                 $push: {
@@ -173,80 +172,6 @@ const populateKeyword = function () {
   console.log('Pressed sofa')
 }
 
-// const onRoom1 = function (event) {
-//   event.preventDefault()
-//   const moveData = {
-//     game: {
-//       $push: {
-//         areas: 'room1'
-//       }
-//     }
-//   }
-//   api.move(moveData)
-//     .then(ui.room1Success)
-//     .catch(ui.roomFailure)
-// }
-//
-// const onRoom2 = function (event) {
-//   event.preventDefault()
-//   const moveData = {
-//     game: {
-//       $push: {
-//         areas: 'room2'
-//       }
-//     }
-//   }
-//   console.log('in onRoom2')
-//   api.move(moveData)
-//     .then(ui.room2Success)
-//     .catch(ui.roomFailure)
-// }
-//
-// const onRoom3 = function (event) {
-//   event.preventDefault()
-//   const moveData = {
-//     game: {
-//       $push: {
-//         areas: 'room3'
-//       }
-//     }
-//   }
-//   console.log('in onRoom3')
-//   api.move(moveData)
-//     .then(ui.room3Success)
-//     .catch(ui.roomFailure)
-// }
-//
-// const onRoom4 = function (event) {
-//   event.preventDefault()
-//   const moveData = {
-//     game: {
-//       $push: {
-//         areas: 'room4'
-//       }
-//     }
-//   }
-//   console.log('in onRoom4')
-//   api.move(moveData)
-//     .then(ui.room4Success)
-//     .catch(ui.roomFailure)
-// }
-//
-// const onRoom5 = function (event) {
-//   event.preventDefault()
-//   const moveData = {
-//     game: {
-//       $push: {
-//         areas: 'room5'
-//       }
-//     }
-//   }
-//   console.log('in onRoom5')
-//   api.move(moveData)
-//     .then(ui.room5Success)
-//     .catch(ui.roomFailure)
-// }
-
 module.exports = {
   onNewGame,
   onIndexGames,
@@ -254,9 +179,4 @@ module.exports = {
   onShowGame,
   onAction,
   populateKeyword
-  // onRoom1,
-  // onRoom2,
-  // onRoom3,
-  // onRoom4,
-  // onRoom5
 }
