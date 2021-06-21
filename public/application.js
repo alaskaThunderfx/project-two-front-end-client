@@ -17059,9 +17059,9 @@ var onAction = function onAction(event, btnId) {
   }
 };
 
-var populateKeyword = function populateKeyword() {
-  console.log('Pressed sofa');
-};
+// const populateKeyword = function () {
+//   console.log('Pressed sofa')
+// }
 
 module.exports = {
   onNewGame: onNewGame,
@@ -17211,7 +17211,6 @@ var newGameFailure = function newGameFailure() {
 var indexGamesSuccess = function indexGamesSuccess(res) {
   var gamesHtml = '';
   res.games.forEach(function (game) {
-    console.log(game);
     if (game.owner === store.user._id) {
       var inventory = [];
       game.inventory.forEach(function (item) {
