@@ -177,6 +177,5 @@ module.exports = {
   onIndexGames,
   onDeleteGame,
   onShowGame,
-  onAction,
-  populateKeyword
+  onAction
 }
