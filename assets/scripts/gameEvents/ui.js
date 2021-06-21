@@ -46,7 +46,6 @@ const newGameFailure = function () {
 const indexGamesSuccess = function (res) {
   let gamesHtml = ''
   res.games.forEach(game => {
-    console.log(game)
     if (game.owner === store.user._id) {
       const inventory = []
       game.inventory.forEach(item => inventory.push(' ' + item))

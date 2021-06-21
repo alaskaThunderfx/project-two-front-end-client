@@ -168,9 +168,9 @@ const onAction = function (event, btnId) {
   }
 }
 
-const populateKeyword = function () {
-  console.log('Pressed sofa')
-}
+// const populateKeyword = function () {
+//   console.log('Pressed sofa')
+// }
 
 module.exports = {
   onNewGame,
