@@ -76,7 +76,7 @@ const indexGamesSuccess = function (res) {
       }
     }
   })
-  console.log(store)
+  $('.game-cabinet').css('display', 'flex')
   $('.game-cabinet').html(gamesHtml)
 }
 
