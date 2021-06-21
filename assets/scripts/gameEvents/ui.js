@@ -45,36 +45,38 @@ const newGameFailure = function () {
 
 const indexGamesSuccess = function (res) {
   let gamesHtml = ''
-
   res.games.forEach(game => {
-    const inventory = []
-    game.inventory.forEach(item => inventory.push(' ' + item))
-    gamesHtml += `
-    <h5>Game ID:</h5>
-    <p>${game._id}</p>
-    <h5>Game started:</h5>
-    <p>${game.createdAt}
-    <h5>Items collected:</h5>
-    `
-    if (game.inventory.length === 0) {
-      gamesHtml +=
+    console.log(game)
+    if (game.owner === store.user._id) {
+      const inventory = []
+      game.inventory.forEach(item => inventory.push(' ' + item))
+      gamesHtml += `
+      <h5>Game ID:</h5>
+      <p>${game._id}</p>
+      <h5>Game started:</h5>
+      <p>${game.createdAt}
+      <h5>Items collected:</h5>
       `
-      <p>None</p>
-      <p>----------------</p>
-      <br>
-      <br>
-      `
-    } else {
-      gamesHtml +=
-      `
-      <p>${inventory}</p>
-      <p>----------------</p>
-      <br>
-      <br>
-      `
+      if (game.inventory.length === 0) {
+        gamesHtml +=
+        `
+        <p>None</p>
+        <p>----------------</p>
+        <br>
+        <br>
+        `
+      } else {
+        gamesHtml +=
+        `
+        <p>${inventory}</p>
+        <p>----------------</p>
+        <br>
+        <br>
+        `
+      }
     }
   })
-
+  console.log(store)
   $('.game-cabinet').html(gamesHtml)
 }
 

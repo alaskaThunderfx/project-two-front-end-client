@@ -25,9 +25,12 @@ const signInSuccess = function (res) {
   $('#messaging').css('grid-column', '2')
   $('#messaging').css('top', '-80%')
   $('#sign-in').css('display', 'none')
+  $('#sign-out').css('display', 'flex')
+  $('#sign-out').css('justify-content', 'center')
   $('#returning-user').addClass('hidden')
   $('#new-user').addClass('hidden')
-  $('.logged-in-forms').removeClass('hidden')
+  // $('.logged-in-forms').removeClass('hidden')
+  $('.logged-in-forms').css('display', 'flex')
   $('.game-actions').removeClass('hidden')
   $('.game-actions').removeClass('')
   $('.logged-in-forms').css('display', 'flex')
@@ -49,12 +52,14 @@ const signOutSuccess = function () {
   $('#messaging').html('You\'ve signed out! Ta ta!')
   $('#messaging').css('top', '-80%')
   $('.for-screen-hiding').addClass('hidden')
-  $('.logged-in-forms').addClass('hidden')
+  $('.logged-in-forms').css('display', 'none')
   $('.game-actions').addClass('hidden')
   $('.user-actions').css('display', 'none')
   $('#sign-up').css('display', 'flex')
   $('#sign-out').css('display', 'none')
   $('#returning-user').removeClass('hidden')
+  $('.game-cabinet').html('')
+
   $('.game-text').html('')
   $('h1').css('grid-row', '')
   $('h1').css('display', '')
@@ -63,7 +68,7 @@ const signOutSuccess = function () {
   $('h1').css('position', '')
   $('h1').css('top', '')
   setTimeout(function () {
-  $('#messaging').html('')
+    $('#messaging').html('')
   }, 2000)
 
   // remove users data
