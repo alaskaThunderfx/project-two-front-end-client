@@ -17068,8 +17068,7 @@ module.exports = {
   onIndexGames: onIndexGames,
   onDeleteGame: onDeleteGame,
   onShowGame: onShowGame,
-  onAction: onAction,
-  populateKeyword: populateKeyword
+  onAction: onAction
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27)))
 
